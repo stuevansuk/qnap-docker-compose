@@ -4,9 +4,9 @@ services:
     image: ghcr.io/linuxserver/nzbget
     container_name: nzbget
     environment:
-      - PUID=1001
-      - PGID=1000
-      - TZ=Australia/Hobart
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
     volumes:
       - /share/Container/nzbget:/config
       - /share/Downloads/NZBGet:/downloads
@@ -18,12 +18,12 @@ services:
     image: ghcr.io/linuxserver/radarr
     container_name: radarr
     environment:
-      - PUID=1001
-      - PGID=1000
-      - TZ=Australia/Hobart
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
     volumes:
       - /share/Container/radarr:/config
-      - /share/Multimedia/Movies:/movies
+      - /share/Media/Movies:/movies
       - /share/Downloads/NZBGet/completed/Movies:/downloads
     ports:
       - 7878:7878
@@ -33,12 +33,12 @@ services:
     image: ghcr.io/linuxserver/sonarr
     container_name: sonarr
     environment:
-      - PUID=1001
-      - PGID=1000
-      - TZ=Australia/Hobart
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
     volumes:
       - /share/Container/sonarr:/config
-      - /share/Multimedia/TV:/tv
+      - /share/Media/TV:/tv
       - /share/Downloads/NZBGet/completed/TV:/downloads
     ports:
       - 8989:8989
@@ -49,14 +49,14 @@ services:
     container_name: plex
     network_mode: host
     environment:
-      - PUID=1001
-      - PGID=1000
+      - PUID=0
+      - PGID=0
       - VERSION=docker
     volumes:
       - /share/Container/plex:/config
-      - /share/Multimedia/TV:/tv
-      - /share/Multimedia/Movies:/movies
-      - /share/Multimedia/Photos:/photos
+      - /share/Media/TV:/tv
+      - /share/Media/Movies:/movies
+      - /share/Media/Photos:/photos
       - /share/Backups/plex_db:/db_backups
     devices:
       - /dev/dri:/dev/dri
@@ -66,7 +66,7 @@ services:
     container_name: portainer
     command: -H unix:///var/run/docker.sock
     environment:
-      - TZ=Australia/Hobart
+      - TZ=Europe/London
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /share/Container/portainer:/data
