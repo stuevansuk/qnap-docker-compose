@@ -9,7 +9,7 @@ services:
       - TZ=Europe/London
     volumes:
       - /share/Container/nzbget:/config
-      - /share/Downloads/NZBGet:/downloads
+      - /share/Downloads/NZBGet:/Downloads
     ports:
       - 6789:6789
     restart: unless-stopped
@@ -23,8 +23,8 @@ services:
       - TZ=Europe/London
     volumes:
       - /share/Container/radarr:/config
-      - /share/Media/Movies:/movies
-      - /share/Downloads/NZBGet/completed/Movies:/downloads
+      - /share/Media/Movies:/Movies
+      - /share/Downloads/NZBGet/completed/Movies:/Downloads
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -38,8 +38,8 @@ services:
       - TZ=Europe/London
     volumes:
       - /share/Container/sonarr:/config
-      - /share/Media/TV:/tv
-      - /share/Downloads/NZBGet/completed/TV:/downloads
+      - /share/Media/TV:/TV
+      - /share/Downloads/NZBGet/completed/TV:/Downloads
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -55,8 +55,8 @@ services:
     volumes:
       - /share/Container/plex:/config
       - /share/Media/TV:/tv
-      - /share/Media/Movies:/movies
-      - /share/Media/Photos:/photos
+      - /share/Media/Movies:/Movies
+      - /share/Media/Photos:/Photos
       - /share/Backups/plex_db:/db_backups
     devices:
       - /dev/dri:/dev/dri
