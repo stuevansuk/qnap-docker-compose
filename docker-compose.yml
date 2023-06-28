@@ -24,7 +24,7 @@ services:
     volumes:
       - /share/Container/radarr:/config
       - /share/Media/Movies:/Movies
-      - /share/Downloads/NZBGet/completed/Movies:/downloads
+      - /share/Downloads/NZBGet:/downloads
     ports:
       - 7878:7878
     restart: unless-stopped
