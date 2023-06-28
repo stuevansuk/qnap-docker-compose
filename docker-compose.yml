@@ -1,7 +1,7 @@
 version: "2.1"
 services:
   nzbget:
-    image: ghcr.io/linuxserver/nzbget
+    image: ghcr.io/linuxserver/nzbget:latest
     container_name: nzbget
     environment:
       - PUID=0
@@ -15,7 +15,7 @@ services:
     restart: unless-stopped
   
   radarr:
-    image: ghcr.io/linuxserver/radarr
+    image: ghcr.io/linuxserver/radarr:nightly
     container_name: radarr
     environment:
       - PUID=0
@@ -30,7 +30,7 @@ services:
     restart: unless-stopped
 
   sonarr:
-    image: ghcr.io/linuxserver/sonarr
+    image: ghcr.io/linuxserver/sonarr:nightly
     container_name: sonarr
     environment:
       - PUID=0
