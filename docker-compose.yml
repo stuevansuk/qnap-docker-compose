@@ -54,7 +54,7 @@ services:
       - VERSION=docker
     volumes:
       - /share/Container/plex:/config
-      - /share/Media/TV:/tv
+      - /share/Media/TV:/TV
       - /share/Media/Movies:/Movies
       - /share/Media/Photos:/Photos
       - /share/Backups/plex_db:/db_backups
