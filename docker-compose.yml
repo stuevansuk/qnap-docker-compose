@@ -39,7 +39,7 @@ services:
     volumes:
       - /share/Container/sonarr:/config
       - /share/Media/TV:/TV
-      - /share/Downloads/NZBGet/completed/TV:/downloads
+      - /share/Downloads/NZBGet:/downloads
     ports:
       - 8989:8989
     restart: unless-stopped
