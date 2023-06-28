@@ -9,7 +9,7 @@ services:
       - TZ=Europe/London
     volumes:
       - /share/Container/nzbget:/config
-      - /share/Downloads/NZBGet:/Downloads
+      - /share/Downloads/NZBGet:/downloads
     ports:
       - 6789:6789
     restart: unless-stopped
@@ -24,7 +24,7 @@ services:
     volumes:
       - /share/Container/radarr:/config
       - /share/Media/Movies:/Movies
-      - /share/Downloads/NZBGet/completed/Movies:/Downloads
+      - /share/Downloads/NZBGet/completed/Movies:/downloads
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -39,7 +39,7 @@ services:
     volumes:
       - /share/Container/sonarr:/config
       - /share/Media/TV:/TV
-      - /share/Downloads/NZBGet/completed/TV:/Downloads
+      - /share/Downloads/NZBGet/completed/TV:/downloads
     ports:
       - 8989:8989
     restart: unless-stopped
