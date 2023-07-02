@@ -29,6 +29,21 @@ services:
       - 7878:7878
     restart: unless-stopped
 
+  lidarr:
+    image: ghcr.io/linuxserver/lidarr:latest
+    container_name: lidarr
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+    volumes:
+      - /share/Container/lidarr:/config
+      - /share/Media/Music:/Music
+      - /share/Downloads/NZBGet:/downloads
+    ports:
+      - 8686:8686
+    restart: unless-stopped
+
   sonarr:
     image: ghcr.io/linuxserver/sonarr:develop
     container_name: sonarr
