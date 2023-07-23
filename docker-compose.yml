@@ -61,7 +61,7 @@ services:
     restart: unless-stopped
 
   plex:
-    image: ghcr.io/linuxserver/plex
+    image: ghcr.io/linuxserver/plex:latest
     container_name: plex
     network_mode: host
     environment:
@@ -76,17 +76,4 @@ services:
       - /share/Backups/plex_db:/db_backups
     devices:
       - /dev/dri:/dev/dri
-    restart: unless-stopped
-  portainer:
-    image: portainer/portainer
-    container_name: portainer
-    command: -H unix:///var/run/docker.sock
-    environment:
-      - TZ=Europe/London
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /share/Container/portainer:/data
-    ports:
-      - 9000:9000
-      - 8000:8000
     restart: unless-stopped
