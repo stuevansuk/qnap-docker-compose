@@ -60,6 +60,20 @@ services:
       - 8989:8989
     restart: unless-stopped
 
+  duckdns:
+    image: lscr.io/linuxserver/duckdns:latest
+    container_name: duckdns
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+      - SUBDOMAINS=evansuk
+      - TOKEN=93b12273-1dba-4b34-bbda-0babfdefcd45
+      - LOG_FILE=false
+    volumes:
+      - /share/Container/duckdns:/config
+    restart: unless-stopped
+
   plex:
     image: ghcr.io/linuxserver/plex:latest
     container_name: plex
