@@ -74,6 +74,19 @@ services:
       - /share/Container/duckdns:/config
     restart: unless-stopped
 
+  overseerr:
+    image: lscr.io/linuxserver/overseerr:latest
+    container_name: overseerr
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+    volumes:
+      - /share/Container/overseerr:/config
+    ports:
+      - 5055:5055
+    restart: unless-stopped
+
   plex:
     image: ghcr.io/linuxserver/plex:latest
     container_name: plex
