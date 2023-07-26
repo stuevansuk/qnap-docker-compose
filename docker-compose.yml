@@ -87,6 +87,19 @@ services:
       - 5055:5055
     restart: unless-stopped
 
+  changedetection:
+    image: lscr.io/linuxserver/changedetection.io:latest
+    container_name: changedetection
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+    volumes:
+      - /share/Container/changedetection:/config
+    ports:
+      - 5000:5000
+    restart: unless-stopped
+
   plex:
     image: ghcr.io/linuxserver/plex:latest
     container_name: plex
