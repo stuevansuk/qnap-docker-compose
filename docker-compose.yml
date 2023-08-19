@@ -140,7 +140,7 @@ services:
       - PGID=0
       - TZ=Europe/London
     volumes:
-      - /path/to/unifi:/config
+      - /share/Container/unifi:/config
     ports:
       - 8443:8443
       - 3478:3478/udp
