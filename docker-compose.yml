@@ -175,7 +175,7 @@ services:
     volumes:
       - /share/Container/homepage:/config
     ports:
-      - 3000:3000
+      - 2000:2000
     restart: unless-stopped
 
   tinfoil-hat:
