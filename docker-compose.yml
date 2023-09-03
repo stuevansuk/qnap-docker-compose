@@ -110,8 +110,8 @@ services:
     volumes:
       - /share/Container/openspeedtest:/config
     ports:
-      - 3000:3000
-      - 3001:3001
+      - 2000:2000
+      - 2001:2001
     restart: unless-stopped
 
   plex:
@@ -175,7 +175,7 @@ services:
     volumes:
       - /share/Container/homepage:/config
     ports:
-      - 2000:2000
+      - 3000:3000
     restart: unless-stopped
 
   tinfoil-hat:
