@@ -165,19 +165,6 @@ services:
       - 9696:9696
     restart: unless-stopped
 
-  homepage:
-    image: ghcr.io/benphelps/homepage:latest
-    container_name: homepage
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Europe/London
-    volumes:
-      - /share/Container/homepage:/config
-    ports:
-      - 3000:3000
-    restart: unless-stopped
-
   tinfoil-hat:
     container_name: tinfoil-hat
     image: vinicioslc/tinfoil-hat:latest
@@ -192,9 +179,5 @@ services:
       - TZ=Europe/London
     ports:
       - 99:80
-      # you can now access on your browser http://localhost:99/shop.json and see your games
     volumes:
-      # path to your custom shop_template.jsonc used to show message on success or add authentication
-      # - ./shop_template.jsonc:/shop_template.jsonc
-      # mount your path to a directory with nsp,xci ...
       - /share/NSW/:/games/
