@@ -110,8 +110,8 @@ services:
     volumes:
       - /share/Container/openspeedtest:/config
     ports:
-      - 2000:2000
-      - 2001:2001
+      - 3000:3000
+      - 3001:3001
     restart: unless-stopped
 
   plex:
