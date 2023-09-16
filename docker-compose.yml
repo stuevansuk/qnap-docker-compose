@@ -195,7 +195,7 @@ services:
       - /share/Container/qbittorrent:/config
       - /share/Downloads/qBittorrent:/downloads
     ports:
-      - 8083:8083
+      #- 8083:8083
       - 6881:6881
       - 6881:6881/udp
     restart: unless-stopped
