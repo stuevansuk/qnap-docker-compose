@@ -200,7 +200,7 @@ services:
     restart: unless-stopped
 
   gluetun:
-    image: qmcgaw/gluetun
+    image: qmcgaw/gluetun:latest
     cap_add:
       - NET_ADMIN
     devices:
