@@ -173,7 +173,7 @@ services:
       #- AUTH_USERS=tinfoiler:password
       - UNAUTHORIZED_MSG='No tricks and treats for you!!'
       - WELCOME_MSG='The Server Just Works!!'
-      - NX_PORTS=5000 # ftp port used to sync saves
+      - NX_PORTS=5000 # ftp port used to sync
       - PUID=0
       - PGID=0
       - TZ=Europe/London
@@ -181,3 +181,20 @@ services:
       - 99:80
     volumes:
       - /share/NSW/:/games/
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Etc/UTC
+      - WEBUI_PORT=8083
+    volumes:
+      - /share/Container/qbittorrent:/config
+      - /share/Downloads/qBittorrent:/downloads
+    ports:
+      - 8083:8083
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped
