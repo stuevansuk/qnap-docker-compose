@@ -215,5 +215,5 @@ services:
     environment:
       - VPN_SERVICE_PROVIDER: mullvad
       - VPN_TYPE: wireguard
-      - WIREGUARD_PRIVATE_KEY: yEqEelkvKx7WBQtJvvwAMlIismTXCxZq3SA6vElgTEc=
+      - WIREGUARD_PRIVATE_KEY: "yEqEelkvKx7WBQtJvvwAMlIismTXCxZq3SA6vElgTEc="
       - WIREGUARD_ADDRESSES: 10.65.8.56/32
