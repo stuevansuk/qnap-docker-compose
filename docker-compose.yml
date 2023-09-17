@@ -188,7 +188,7 @@ services:
     environment:
       - PUID=0
       - PGID=0
-      - TZ=Etc/UTC
+      - TZ=Europe/London
       - WEBUI_PORT=8083
     volumes:
       - /share/Container/qbittorrent:/config
@@ -213,6 +213,9 @@ services:
     volumes:
       - /share/Container/gluetun:/gluetun
     environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
       - VPN_SERVICE_PROVIDER: mullvad
       - VPN_TYPE: wireguard
       - WIREGUARD_PRIVATE_KEY: yEqEelkvKx7WBQtJvvwAMlIismTXCxZq3SA6vElgTEc=
