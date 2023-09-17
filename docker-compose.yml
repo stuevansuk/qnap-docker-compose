@@ -190,12 +190,12 @@ services:
       - PUID=0
       - PGID=0
       - TZ=Etc/UTC
-      #- WEBUI_PORT=8083
+      - WEBUI_PORT=8083
     volumes:
       - /share/Container/qbittorrent:/config
       - /share/Downloads/qBittorrent:/downloads
     ports:
-      #- 8083:8083
+      - 8083:8083
       - 6881:6881
       - 6881:6881/udp
     restart: unless-stopped
@@ -213,7 +213,7 @@ services:
     volumes:
       - /share/Container/gluetun:/gluetun
     environment:
-      - VPN_SERVICE_PROVIDER=mullvad
-      - VPN_TYPE=openvpn
-      - OPENVPN_USER=2772142912050276
-      - SERVER_CITIES=Amsterdam
+      - VPN_SERVICE_PROVIDER: mullvad
+      - VPN_TYPE: wireguard
+      - WIREGUARD_PRIVATE_KEY: yEqEelkvKx7WBQtJvvwAMlIismTXCxZq3SA6vElgTEc=
+      - WIREGUARD_ADDRESSES: 10.65.8.56/32
