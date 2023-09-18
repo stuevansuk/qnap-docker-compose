@@ -194,10 +194,6 @@ services:
     volumes:
       - /share/Container/qbittorrent:/config
       - /share/Downloads/qBittorrent:/downloads
-    ports:
-      - 8083:8083
-      - 6881:6881
-      - 6881:6881/udp
     restart: unless-stopped
 
   gluetun:
@@ -211,6 +207,7 @@ services:
       - 8888:8888/tcp # HTTP proxy
       - 8388:8388/tcp # Shadowsocks
       - 8388:8388/udp # Shadowsocks
+      - 8090:8090 # port for qbittorrent
     volumes:
       - /share/Container/gluetun:/gluetun
     environment:
