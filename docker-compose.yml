@@ -216,5 +216,5 @@ services:
       - TZ=Europe/London
       - VPN_SERVICE_PROVIDER=mullvad
       - VPN_TYPE=wireguard
-      - WIREGUARD_PRIVATE_KEY=yEqEelkvKx7WBQtJvvwAMlIismTXCxZq3SA6vElgTEc=
-      - WIREGUARD_ADDRESSES=10.65.8.56/32
+      - WIREGUARD_PRIVATE_KEY=mK3mAy4t3z/t1lNMuPxI0zrOGBuzZShLvu1Uj+lcpFQ=
+      - WIREGUARD_ADDRESSES=10.68.162.204/32
