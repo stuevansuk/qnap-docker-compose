@@ -222,8 +222,6 @@ services:
   uxrdp:
     image: stuevansuk/ubuntuxrdp:latest
     container_name: uxrdp
-    cap_add:
-      #- SYS_ADMIN
     ports:
       - 3389:3389
     environments:
