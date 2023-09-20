@@ -222,11 +222,14 @@ services:
   uxrdp:
     image: stuevansuk/ubuntuxrdp:latest
     container_name: uxrdp
-    environment:
+    cap_add:
+      - SYS_ADMIN
+    ports:
+      - 3389:3389
+    environments:
       - PUID=0
       - PGID=0
       - TZ=Europe/London
-      - RDP_PORT=3389
     volumes:
       - /share/Container/uxrdp:/config
     restart: unless-stopped
