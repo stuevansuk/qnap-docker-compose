@@ -218,3 +218,15 @@ services:
       - VPN_TYPE=wireguard
       - WIREGUARD_PRIVATE_KEY=mK3mAy4t3z/t1lNMuPxI0zrOGBuzZShLvu1Uj+lcpFQ=
       - WIREGUARD_ADDRESSES=10.68.162.204/32
+
+  uxrdp:
+    image: stuevansuk/ubuntuxrdp:latest
+    container_name: uxrdp
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+      - RDP_PORT=3389
+    volumes:
+      - /share/Container/uxrdp:/config
+    restart: unless-stopped
