@@ -208,6 +208,7 @@ services:
       - 8388:8388/tcp # Shadowsocks
       - 8388:8388/udp # Shadowsocks
       - 8090:8090 # port for qbittorrent
+      - 29304:29304 # port for qbittorrent
     volumes:
       - /share/Container/gluetun:/gluetun
     environment:
