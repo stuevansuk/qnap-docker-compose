@@ -224,7 +224,7 @@ services:
     container_name: uxrdp
     ports:
       - 3389:3389
-    environments:
+    environment:
       - PUID=0
       - PGID=0
       - TZ=Europe/London
