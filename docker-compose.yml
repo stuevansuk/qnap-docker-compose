@@ -223,7 +223,7 @@ services:
     image: stuevansuk/ubuntuxrdp:latest
     container_name: uxrdp
     cap_add:
-      - privileged
+      - NET_ADMIN
     ports:
       - 3389:3389
     environment:
