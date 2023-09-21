@@ -209,6 +209,9 @@ services:
       - 8388:8388/udp # Shadowsocks
       - 8090:8090 # port for qbittorrent
       - 29304:29304 # port for qbittorrent
+      - 8112:8112 #deluge
+      - 6881:6881 #deluge
+      - 6881:6881/udp #deluge
     volumes:
       - /share/Container/gluetun:/gluetun
     environment:
@@ -233,4 +236,18 @@ services:
       - TZ=Europe/London
     volumes:
       - /share/Container/uxrdp:/config
+    restart: unless-stopped
+
+  deluge:
+    image: lscr.io/linuxserver/deluge:latest
+    container_name: deluge
+    network_mode: "service:gluetun"
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+      #- DELUGE_LOGLEVEL=error #optional
+    volumes:
+      - /share/Container/deluge:/config
+      - /share/Downloads/deluge:/downloads
     restart: unless-stopped
