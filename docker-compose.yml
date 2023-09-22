@@ -216,8 +216,6 @@ services:
       - /share/Container/gluetun:/gluetun
       - /share/Container/deluge:/config
       - /share/Downloads/deluge:/downloads
-      - /share/Container/qbittorrent:/config
-      - /share/Downloads/qBittorrent:/downloads
     environment:
       - PUID=0
       - PGID=0
