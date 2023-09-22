@@ -248,7 +248,7 @@ services:
       - PUID=0
       - PGID=0
       - TZ=Europe/London
-      #- DELUGE_LOGLEVEL=error #optional
+      - DELUGE_LOGLEVEL=error #optional
     volumes:
       - /share/Container/deluge:/config
       - /share/Downloads/deluge:/downloads
