@@ -212,7 +212,6 @@ services:
       - 8112:8112 #deluge
       - 6881:6881 #deluge
       - 6881:6881/udp #deluge
-      - 3389:3389 #uxrdp
     volumes:
       - /share/Container/gluetun:/gluetun
       - /share/Container/deluge:/config
@@ -229,9 +228,10 @@ services:
   uxrdp:
     image: stuevansuk/ubuntuxrdp:latest
     container_name: uxrdp
-    network_mode: "service:gluetun"
     cap_add:
       - NET_ADMIN
+    ports:
+      - 8888:8888/tcp # HTTP proxy
     environment:
       - PUID=0
       - PGID=0
