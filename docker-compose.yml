@@ -186,6 +186,8 @@ services:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
     network_mode: "service:gluetun"
+    cap_add:
+      - NET_ADMIN
     environment:
       - PUID=0
       - PGID=0
@@ -244,6 +246,8 @@ services:
     image: lscr.io/linuxserver/deluge:latest
     container_name: deluge
     network_mode: "service:gluetun"
+    cap_add:
+      - NET_ADMIN
     environment:
       - PUID=0
       - PGID=0
