@@ -232,8 +232,6 @@ services:
     network_mode: "service:gluetun"
     cap_add:
       - NET_ADMIN
-    ports:
-      - 3389:3389
     environment:
       - PUID=0
       - PGID=0
