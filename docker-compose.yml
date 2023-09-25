@@ -240,5 +240,3 @@ services:
       - /share/Downloads/deluge:/downloads
       - /share/NSW/:/games/
     restart: unless-stopped
-
-
