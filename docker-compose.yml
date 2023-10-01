@@ -240,3 +240,22 @@ services:
       - /share/Downloads/deluge:/downloads
       - /share/NSW/:/games/
     restart: unless-stopped
+
+  emby:
+    image: lscr.io/linuxserver/emby:latest
+    container_name: emby
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+    volumes:
+      - /share/Container/emby:/config
+      - /share/Media/TV:/TV
+      - /share/Media/Movies:/Movies
+      - /share/Media/Photos:/Photos
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+    devices:
+      - /dev/dri:/dev/dri #optional
+    restart: unless-stopped
