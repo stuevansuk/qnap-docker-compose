@@ -196,6 +196,7 @@ services:
       - 8112:8112 #deluge
       - 6881:6881 #deluge
       - 6881:6881/udp #deluge
+      - 8083:8083 #QbitTorrent
     volumes:
       - /share/Container/gluetun:/gluetun
       - /share/Container/deluge:/config
@@ -258,4 +259,17 @@ services:
       - 8920:8920 #optional
     devices:
       - /dev/dri:/dev/dri #optional
+    restart: unless-stopped
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+      - WEBUI_PORT=8083
+    volumes:
+      - /share/Container/qbittorrent:/config
+      - /share/Downloads/qBittorrent/:/downloads
     restart: unless-stopped
