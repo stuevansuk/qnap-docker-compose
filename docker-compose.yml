@@ -271,5 +271,6 @@ services:
       - WEBUI_PORT=8083
     volumes:
       - /share/Container/qbittorrent:/config
-      - /share/Downloads/qBittorrent/:/downloads
+      - /share/Downloads/qBittorrent:/downloads
+      - /share/NSW/:/games/
     restart: unless-stopped
