@@ -272,5 +272,5 @@ services:
     volumes:
       - /share/Container/qbittorrent:/config
       - /share/Downloads/qBittorrent:/downloads
-      - /share/NSW/:/games/
+      - /share/NSW:/games/
     restart: unless-stopped
