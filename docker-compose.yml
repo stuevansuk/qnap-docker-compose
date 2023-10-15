@@ -201,6 +201,8 @@ services:
       - /share/Container/gluetun:/gluetun
       - /share/Container/deluge:/config
       - /share/Downloads/deluge:/downloads
+      - /share/Container/qbittorrent:/config
+      - /share/Downloads/qBittorrent:/downloads
     environment:
       - PUID=0
       - PGID=0
@@ -264,6 +266,9 @@ services:
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
+    network_mode: "service:gluetun"
+    cap_add:
+      - NET_ADMIN
     environment:
       - PUID=0
       - PGID=0
