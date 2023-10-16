@@ -169,11 +169,7 @@ services:
     container_name: tinfoil-hat
     image: vinicioslc/tinfoil-hat:latest
     environment:
-      - DEBUG=*
-      #- AUTH_USERS=tinfoiler:password
-      #- UNAUTHORIZED_MSG='No tricks and treats for you!!'
-      #- WELCOME_MSG='The Server Just Works!!'
-      - NX_PORTS=5000 # ftp port used to sync
+      - DEBUG=tinfoil-hat
       - PUID=0
       - PGID=0
       - TZ=Europe/London
