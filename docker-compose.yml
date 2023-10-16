@@ -262,20 +262,3 @@ services:
     devices:
       - /dev/dri:/dev/dri #optional
     restart: unless-stopped
-
-  qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest
-    container_name: qbittorrent
-    network_mode: "service:gluetun"
-    cap_add:
-      - NET_ADMIN
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Europe/London
-      - WEBUI_PORT=8083
-    volumes:
-      - /share/Container/qbittorrent:/config
-      - /share/Downloads/qBittorrent:/downloads
-      - /share/NSW:/games/
-    restart: unless-stopped
