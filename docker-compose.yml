@@ -185,6 +185,10 @@ services:
   unifi-db:
     image: docker.io/mongo:4.4
     container_name: unifi-db
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
     volumes:
       - /share/Container/mongodb:/data/db
       - /share/Container/mongodb/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
