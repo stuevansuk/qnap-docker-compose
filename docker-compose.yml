@@ -299,8 +299,6 @@ services:
       - /share/Container/qbittorrent:/config
       - /share/Downloads/qBittorrent/:/downloads
       - /share/NSW/:/games/
-    ports:
-
     restart: unless-stopped
 
   emby:
