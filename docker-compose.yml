@@ -281,7 +281,8 @@ services:
     volumes:
       - /share/Container/deluge:/config
       - /share/Downloads/deluge:/downloads
-      - /share/NSW/:/games/
+      - /share/NSW/:/nsw-games/
+      - /share/PC/:/pc-games/
     restart: unless-stopped
 
   qbittorrent:
