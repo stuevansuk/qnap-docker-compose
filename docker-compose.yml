@@ -330,3 +330,17 @@ services:
     ports:
       - 8000:8000
     restart: unless-stopped
+
+  get_iplayer:
+    image: ghcr.io/thespad/get_iplayer
+    container_name: get_iplayer
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+    volumes:
+      - /share/Container/get-iplayer:/config
+      - /share/Downloads/get-iplayer:/downloads
+    ports:
+      - 1935:1935
+    restart: unless-stopped
