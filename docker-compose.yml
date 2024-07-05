@@ -340,7 +340,7 @@ services:
       - TZ=Europe/London
     volumes:
       - /share/Container/get-iplayer:/config
-      - /share/Downloads/get-iplayer:/downloads
+      - /share/Downloads/iPlayer:/downloads
     ports:
       - 1935:1935
     restart: unless-stopped
