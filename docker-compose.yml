@@ -351,9 +351,6 @@ services:
       - PUID=0
       - PGID=0
       - TZ=Europe/London
-      - EULA="TRUE"
-      - GAMEMODE=survival
-      - DIFFICULTY=normal
     tty: true
     stdin_open: true
     ports:
