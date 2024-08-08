@@ -344,6 +344,7 @@ services:
     ports:
       - 1935:1935
     restart: unless-stopped
+
   mc:
     image: itzg/minecraft-bedrock-server
     container_name: minecraft
@@ -356,6 +357,11 @@ services:
       - PLUGINS= |
           https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot
           https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/spigot
+      - CURSEFORGE_FILES= |
+        geckolib
+        aquaculture
+        naturalist
+        multiverse-core
     tty: true
     stdin_open: true
     ports:
