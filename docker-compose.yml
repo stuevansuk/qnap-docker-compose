@@ -356,5 +356,4 @@ services:
     ports:
       - 19132:19132/udp
     volumes:
-      # attach the relative directory 'data' to the container's /data path
       - /share/Container/minecraft/data:/data
