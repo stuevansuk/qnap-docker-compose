@@ -345,7 +345,7 @@ services:
       - 1935:1935
     restart: unless-stopped
   mc:
-    image: itzg/minecraft-server
+    image: itzg/minecraft-bedrock-server
     tty: true
     stdin_open: true
     ports:
