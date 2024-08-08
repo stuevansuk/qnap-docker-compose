@@ -353,9 +353,9 @@ services:
       - TZ=Europe/London
       - EULA=TRUE
       - TYPE=PAPER
-    PLUGINS: |
-        https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot
-        https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/spigot
+      - PLUGINS: |
+          https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot
+          https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/spigot
     tty: true
     stdin_open: true
     ports:
