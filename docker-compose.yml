@@ -365,6 +365,7 @@ services:
         naturalist
         multiverse-core
       - SPIGET_RESOURCES=9089
+      - MOTD= "§l§cEvanzSMP§r §nserver"
     tty: true
     stdin_open: true
     ports:
