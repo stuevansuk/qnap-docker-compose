@@ -349,26 +349,26 @@ services:
     image: itzg/minecraft-bedrock-server
     container_name: minecraft
     environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Europe/London
-      - EULA=TRUE
-      - TYPE=PAPER
-      - ENABLE_COMMAND_BLOCK=true
-      - ALLOW_CHEATS=true
-      - DEUBG=true
-      - PLUGINS= |
+      PUID: 0
+      PGID: 0
+      TZ: Europe/London
+      EULA: TRUE
+      TYPE: PAPER
+      ENABLE_COMMAND_BLOCK: true
+      ALLOW_CHEATS: true
+      DEUBG: true
+      PLUGINS: |
           https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot
           https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/spigot
           EssentialsX-2.21.0-dev+107-7b02d22.jar
-      - CF_API_KEY='$2a$10$8xoQagoPgHUlseyGnrIyS.rKmipdk/VECE1Z9.6KErUqn6/8Eeh46'
-      - MOTD='§l§cEvanzSMP§r §nserver'
-      - CURSEFORGE_FILES= |
+      CF_API_KEY: '$2a$10$8xoQagoPgHUlseyGnrIyS.rKmipdk/VECE1Z9.6KErUqn6/8Eeh46'
+      MOTD: '§l§cEvanzSMP§r §nserver'
+      CURSEFORGE_FILES: |
         geckolib
         aquaculture
         naturalist
         multiverse-core
-      - SPIGET_RESOURCES=9089
+      SPIGET_RESOURCES: 9089
     tty: true
     stdin_open: true
     ports:
