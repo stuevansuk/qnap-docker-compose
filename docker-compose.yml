@@ -358,7 +358,7 @@ services:
       RCON_PASSWORD: "turdy" # Replace with a secure password
       ENABLE_Geyser: "true" # Enable Geyser for cross-platform play
       Geyser_INSTALL_TYPE: "BUKKIT" # Install Geyser as a Bukkit plugin
-      PLUGINS: "Geyser-Spigot, floodgate, EssentialsX" # Geyser and Floodgate plugins for cross-platform play
+      #PLUGINS: "Geyser-Spigot, floodgate, EssentialsX" # Geyser and Floodgate plugins for cross-platform play
       Geyser_PLATFORM: "FABRIC"
     ports:
       - 19132:19132/udp
