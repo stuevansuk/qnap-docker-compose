@@ -353,7 +353,7 @@ services:
       TYPE: "FABRIC" # Using Fabric for mod support
       VERSION: "1.20.1" # Specify your Minecraft version here
       MEMORY: "4G"
-      MODS: "geckolib, aquaculture, naturalist, multiverse-core"
+      MODS: "geckolib-neoforge-1.21-4.5.8.jar, Aquaculture-1.20.1-2.5.2.jar, naturalist-forge-4.0.3-1.20.1.jar, Multiverse-Core-4.3.1.jar"
       ENABLE_RCON: "true"
       RCON_PASSWORD: "turdy" # Replace with a secure password
       ENABLE_Geyser: "true" # Enable Geyser for cross-platform play
