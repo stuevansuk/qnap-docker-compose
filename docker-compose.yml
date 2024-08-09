@@ -360,13 +360,13 @@ services:
           https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot
           https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/spigot
       - CF_API_KEY='$2a$10$8xoQagoPgHUlseyGnrIyS.rKmipdk/VECE1Z9.6KErUqn6/8Eeh46'
+      - MOTD='§l§cEvanzSMP§r §nserver'
       - CURSEFORGE_FILES= |
         geckolib
         aquaculture
         naturalist
         multiverse-core
       - SPIGET_RESOURCES=9089
-      - MOTD= "§l§cEvanzSMP§r §nserver"
     tty: true
     stdin_open: true
     ports:
