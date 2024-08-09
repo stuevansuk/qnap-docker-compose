@@ -345,25 +345,30 @@ services:
       - 1935:1935
     restart: unless-stopped
 
-  minecraft-server:
-    image: itzg/minecraft-server:latest
-    container_name: minecraft-server
+  mc:
+    image: itzg/minecraft-bedrock-server
+    container_name: minecraft
     environment:
-      EULA: "TRUE"
-      TYPE: "FABRIC" # Using Fabric for mod support
-      VERSION: "1.20.1" # Specify your Minecraft version here
-      MEMORY: "4G"
-      #MODS: "geckolib-neoforge-1.21-4.5.8.jar, Aquaculture-1.20.1-2.5.2.jar, naturalist-forge-4.0.3-1.20.1.jar, Multiverse-Core-4.3.1.jar"
-      ENABLE_RCON: "true"
-      RCON_PASSWORD: "turdy" # Replace with a secure password
-      ENABLE_Geyser: "true" # Enable Geyser for cross-platform play
-      Geyser_INSTALL_TYPE: "BUKKIT" # Install Geyser as a Bukkit plugin
-      #PLUGINS: "Geyser-Spigot, floodgate, EssentialsX" # Geyser and Floodgate plugins for cross-platform play
-      Geyser_PLATFORM: "FABRIC"
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+      - EULA=TRUE
+      - TYPE=PAPER
+      - ENABLE_COMMAND_BLOCK=true
+      - ALLOW_CHEATS=true
+      - PLUGINS= |
+          https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot
+          https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/spigot
+      - CURSEFORGE_FILES= |
+        geckolib
+        aquaculture
+        naturalist
+        multiverse-core
+      - SPIGET_RESOURCES=9089
+    tty: true
+    stdin_open: true
     ports:
       - 19132:19132/udp
       - 25565:25565 
     volumes:
       - /share/Container/minecraft/data:/data
-      - /share/Container/minecraft/mods:/mods
-      - /share/Container/minecraft/plugins:/plugins
