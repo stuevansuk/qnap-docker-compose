@@ -355,10 +355,10 @@ services:
       MEMORY: "4G"
       MODS: "geckolib, aquaculture, naturalist, multiverse-core"
       ENABLE_RCON: "true"
-      RCON_PASSWORD: "your_rcon_password" # Replace with a secure password
+      RCON_PASSWORD: "turdy" # Replace with a secure password
       ENABLE_Geyser: "true" # Enable Geyser for cross-platform play
       Geyser_INSTALL_TYPE: "BUKKIT" # Install Geyser as a Bukkit plugin
-      PLUGINS: "Geyser-Spigot, floodgate" # Geyser and Floodgate plugins for cross-platform play
+      PLUGINS: "Geyser-Spigot, floodgate, EssentialsX" # Geyser and Floodgate plugins for cross-platform play
       Geyser_PLATFORM: "FABRIC"
     ports:
       - 19132:19132/udp
