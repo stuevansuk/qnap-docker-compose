@@ -362,6 +362,7 @@ services:
         aquaculture
         naturalist
         multiverse-core
+      - SPIGET_RESOURCES=9089
     tty: true
     stdin_open: true
     ports:
