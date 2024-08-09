@@ -359,6 +359,7 @@ services:
       - PLUGINS= |
           https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot
           https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/spigot
+          EssentialsX-2.21.0-dev+107-7b02d22.jar
       - CF_API_KEY='$2a$10$8xoQagoPgHUlseyGnrIyS.rKmipdk/VECE1Z9.6KErUqn6/8Eeh46'
       - MOTD='§l§cEvanzSMP§r §nserver'
       - CURSEFORGE_FILES= |
