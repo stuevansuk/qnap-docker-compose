@@ -373,3 +373,5 @@ services:
       - 25565:25565 
     volumes:
       - /share/Container/minecraft/data:/data
+      - /share/Container/minecraft/plugins:/plugins
+      - /share/Container/minecraft/mods:/mods
