@@ -378,3 +378,18 @@ services:
       - /share/Container/minecraft/data:/data
       - /share/Container/minecraft/plugins:/plugins
       - /share/Container/minecraft/mods:/mods
+
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+    volumes:
+      - /share/Container/sabnzbd:/config
+      - /share/Downloads/SABnzbd/downloads:/downloads #optional
+      - /share/Downloads/SABnzbd/incomplete-downloads:/incomplete-downloads #optional
+    ports:
+      - 8085:8080
+    restart: unless-stopped
