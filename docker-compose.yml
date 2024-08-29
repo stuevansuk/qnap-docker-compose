@@ -25,7 +25,7 @@ services:
     volumes:
       - /share/Container/radarr:/config
       - /share/Media/Movies:/Movies
-      - /share/Downloads/NZBGet:/downloads
+      #- /share/Downloads/NZBGet:/downloads
       - /share/Downloads/SABnzbd/downloads:/downloads
     ports:
       - 7878:7878
@@ -41,7 +41,7 @@ services:
     volumes:
       - /share/Container/lidarr:/config
       - /share/Media/Music:/Music
-      - /share/Downloads/NZBGet:/downloads
+      #- /share/Downloads/NZBGet:/downloads
       - /share/Downloads/SABnzbd/downloads:/downloads
     ports:
       - 8686:8686
@@ -57,7 +57,7 @@ services:
     volumes:
       - /share/Container/readarr:/config
       - /share/Books:/Books
-      - /share/Downloads/NZBGet:/downloads
+      #- /share/Downloads/NZBGet:/downloads
       - /share/Downloads/SABnzbd/downloads:/downloads
     ports:
       - 8787:8787
@@ -73,7 +73,7 @@ services:
     volumes:
       - /share/Container/sonarr:/config
       - /share/Media/TV:/TV
-      - /share/Downloads/NZBGet:/downloads
+      #- /share/Downloads/NZBGet:/downloads
       - /share/Downloads/SABnzbd/downloads:/downloads
     ports:
       - 8989:8989
