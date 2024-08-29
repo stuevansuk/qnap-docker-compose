@@ -16,7 +16,7 @@ services:
     restart: unless-stopped
   
   radarr:
-    image: ghcr.io/linuxserver/radarr:nightly
+    image: ghcr.io/linuxserver/radarr:latest
     container_name: radarr
     environment:
       - PUID=0
