@@ -26,6 +26,7 @@ services:
       - /share/Container/radarr:/config
       - /share/Media/Movies:/Movies
       - /share/Downloads/NZBGet:/downloads
+      - /share/Downloads/SABnzbd/downloads:/downloads
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -41,6 +42,7 @@ services:
       - /share/Container/lidarr:/config
       - /share/Media/Music:/Music
       - /share/Downloads/NZBGet:/downloads
+      - /share/Downloads/SABnzbd/downloads:/downloads
     ports:
       - 8686:8686
     restart: unless-stopped
@@ -56,6 +58,7 @@ services:
       - /share/Container/readarr:/config
       - /share/Books:/Books
       - /share/Downloads/NZBGet:/downloads
+      - /share/Downloads/SABnzbd/downloads:/downloads
     ports:
       - 8787:8787
     restart: unless-stopped
@@ -71,6 +74,7 @@ services:
       - /share/Container/sonarr:/config
       - /share/Media/TV:/TV
       - /share/Downloads/NZBGet:/downloads
+      - /share/Downloads/SABnzbd/downloads:/downloads
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -388,8 +392,8 @@ services:
       - TZ=Europe/London
     volumes:
       - /share/Container/sabnzbd:/config
-      - /share/Downloads/SABnzbd/downloads:/downloads #optional
-      - /share/Downloads/SABnzbd/incomplete-downloads:/incomplete-downloads #optional
+      - /share/Downloads/SABnzbd/downloads:/downloads 
+      - /share/Downloads/SABnzbd/incomplete-downloads:/incomplete-downloads 
     ports:
       - 8085:8080
     restart: unless-stopped
