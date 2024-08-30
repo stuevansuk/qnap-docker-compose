@@ -397,3 +397,13 @@ services:
     ports:
       - 8085:8080
     restart: unless-stopped
+
+  guacamole:
+    image: unsafetypin/guacamole
+    environment:
+    - EXTENSIONS=auth-totp
+    volumes:
+    - /share/Container/guacamole:/config
+    ports:
+    - "8086:8080"
+    restart: always
