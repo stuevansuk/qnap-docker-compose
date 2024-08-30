@@ -400,6 +400,11 @@ services:
 
   guacamole:
     image: unsafetypin/guacamole
+    container_name: guacamole
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
     volumes:
     - /share/Container/guacamole:/config
     ports:
