@@ -400,8 +400,6 @@ services:
 
   guacamole:
     image: unsafetypin/guacamole
-    environment:
-    - EXTENSIONS=auth-totp
     volumes:
     - /share/Container/guacamole:/config
     ports:
