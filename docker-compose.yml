@@ -1,19 +1,19 @@
 version: "2.1"
 services:
-  nzbget:
-    image: jscottelblein/nzbget:latest
-    container_name: nzbget
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Europe/London
-    volumes:
-      - /share/Container/nzbget:/config
-      - /share/Container/nzbget-interdir:/inter-dir
-      - /share/Downloads/NZBGet:/downloads
-    ports:
-      - 6789:6789
-    restart: unless-stopped
+  # nzbget:
+  #   image: jscottelblein/nzbget:latest
+  #   container_name: nzbget
+  #   environment:
+  #     - PUID=0
+  #     - PGID=0
+  #     - TZ=Europe/London
+  #   volumes:
+  #     - /share/Container/nzbget:/config
+  #     - /share/Container/nzbget-interdir:/inter-dir
+  #     - /share/Downloads/NZBGet:/downloads
+  #   ports:
+  #     - 6789:6789
+  #   restart: unless-stopped
   
   radarr:
     image: ghcr.io/linuxserver/radarr:latest
@@ -119,19 +119,19 @@ services:
       - 5000:5000
     restart: unless-stopped
 
-  openspeedtest:
-    image: openspeedtest/latest
-    container_name: openspeedtest
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Europe/London
-    volumes:
-      - /share/Container/openspeedtest:/config
-    ports:
-      - 3000:3000
-      - 3001:3001
-    restart: unless-stopped
+  # openspeedtest:
+  #   image: openspeedtest/latest
+  #   container_name: openspeedtest
+  #   environment:
+  #     - PUID=0
+  #     - PGID=0
+  #     - TZ=Europe/London
+  #   volumes:
+  #     - /share/Container/openspeedtest:/config
+  #   ports:
+  #     - 3000:3000
+  #     - 3001:3001
+  #   restart: unless-stopped
 
   plex:
     image: ghcr.io/linuxserver/plex:latest
@@ -285,41 +285,41 @@ services:
       - /share/PC/:/pc-games/
     restart: unless-stopped
 
-  qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest
-    container_name: qbittorrent
-    network_mode: "service:gluetun"
-    cap_add:
-      - NET_ADMIN
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Europe/London
-      - WEBUI_PORT=8083
-    volumes:
-      - /share/Container/qbittorrent:/config
-      - /share/Downloads/qBittorrent/:/downloads
-      - /share/NSW/:/games/
-    restart: unless-stopped
+  # qbittorrent:
+  #   image: lscr.io/linuxserver/qbittorrent:latest
+  #   container_name: qbittorrent
+  #   network_mode: "service:gluetun"
+  #   cap_add:
+  #     - NET_ADMIN
+  #   environment:
+  #     - PUID=0
+  #     - PGID=0
+  #     - TZ=Europe/London
+  #     - WEBUI_PORT=8083
+  #   volumes:
+  #     - /share/Container/qbittorrent:/config
+  #     - /share/Downloads/qBittorrent/:/downloads
+  #     - /share/NSW/:/games/
+  #   restart: unless-stopped
 
-  emby:
-    image: lscr.io/linuxserver/emby:latest
-    container_name: emby
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Europe/London
-    volumes:
-      - /share/Container/emby:/config
-      - /share/Media/TV:/TV
-      - /share/Media/Movies:/Movies
-      - /share/Media/Photos:/Photos
-    ports:
-      - 8096:8096
-      - 8920:8920 #optional
-    devices:
-      - /dev/dri:/dev/dri #optional
-    restart: unless-stopped
+  # emby:
+  #   image: lscr.io/linuxserver/emby:latest
+  #   container_name: emby
+  #   environment:
+  #     - PUID=0
+  #     - PGID=0
+  #     - TZ=Europe/London
+  #   volumes:
+  #     - /share/Container/emby:/config
+  #     - /share/Media/TV:/TV
+  #     - /share/Media/Movies:/Movies
+  #     - /share/Media/Photos:/Photos
+  #   ports:
+  #     - 8096:8096
+  #     - 8920:8920 #optional
+  #   devices:
+  #     - /dev/dri:/dev/dri #optional
+  #   restart: unless-stopped
 
   pyload-ng:
     image: lscr.io/linuxserver/pyload-ng:latest
@@ -349,39 +349,39 @@ services:
       - 1935:1935
     restart: unless-stopped
 
-  mc:
-    image: itzg/minecraft-bedrock-server
-    container_name: minecraft
-    environment:
-      PUID: 0
-      PGID: 0
-      TZ: Europe/London
-      EULA: TRUE
-      TYPE: PAPER
-      ENABLE_COMMAND_BLOCK: true
-      ALLOW_CHEATS: true
-      DEUBG: true
-      PLUGINS: |
-          https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot
-          https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/spigot
-          EssentialsX-2.21.0-dev+107-7b02d22.jar
-      CF_API_KEY: '$2a$10$8xoQagoPgHUlseyGnrIyS.rKmipdk/VECE1Z9.6KErUqn6/8Eeh46'
-      MOTD: '§l§cEvanzSMP§r §nserver'
-      CURSEFORGE_FILES: |
-        geckolib
-        aquaculture
-        naturalist
-        multiverse-core
-      SPIGET_RESOURCES: 9089
-    tty: true
-    stdin_open: true
-    ports:
-      - 19132:19132/udp
-      - 25565:25565 
-    volumes:
-      - /share/Container/minecraft/data:/data
-      - /share/Container/minecraft/plugins:/plugins
-      - /share/Container/minecraft/mods:/mods
+  # mc:
+  #   image: itzg/minecraft-bedrock-server
+  #   container_name: minecraft
+  #   environment:
+  #     PUID: 0
+  #     PGID: 0
+  #     TZ: Europe/London
+  #     EULA: TRUE
+  #     TYPE: PAPER
+  #     ENABLE_COMMAND_BLOCK: true
+  #     ALLOW_CHEATS: true
+  #     DEUBG: true
+  #     PLUGINS: |
+  #         https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot
+  #         https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/spigot
+  #         EssentialsX-2.21.0-dev+107-7b02d22.jar
+  #     CF_API_KEY: '$2a$10$8xoQagoPgHUlseyGnrIyS.rKmipdk/VECE1Z9.6KErUqn6/8Eeh46'
+  #     MOTD: '§l§cEvanzSMP§r §nserver'
+  #     CURSEFORGE_FILES: |
+  #       geckolib
+  #       aquaculture
+  #       naturalist
+  #       multiverse-core
+  #     SPIGET_RESOURCES: 9089
+  #   tty: true
+  #   stdin_open: true
+  #   ports:
+  #     - 19132:19132/udp
+  #     - 25565:25565 
+  #   volumes:
+  #     - /share/Container/minecraft/data:/data
+  #     - /share/Container/minecraft/plugins:/plugins
+  #     - /share/Container/minecraft/mods:/mods
 
   sabnzbd:
     image: lscr.io/linuxserver/sabnzbd:latest
@@ -398,15 +398,15 @@ services:
       - 8085:8080
     restart: unless-stopped
 
-  guacamole:
-    image: unsafetypin/guacamole
-    container_name: guacamole
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Europe/London
-    volumes:
-    - /share/Container/guacamole:/config
-    ports:
-    - "8086:8080"
-    restart: always
+  # guacamole:
+  #   image: unsafetypin/guacamole
+  #   container_name: guacamole
+  #   environment:
+  #     - PUID=0
+  #     - PGID=0
+  #     - TZ=Europe/London
+  #   volumes:
+  #   - /share/Container/guacamole:/config
+  #   ports:
+  #   - "8086:8080"
+  #   restart: always
