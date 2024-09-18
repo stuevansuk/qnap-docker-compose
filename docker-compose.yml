@@ -258,13 +258,15 @@ services:
       - NET_ADMIN
       - SYS_ADMIN
     ports:
-      - 3389:3389/tcp # HTTP proxy
+      - 3389:3389/tcp # RDP port
+      - 9001:9001/tcp # Supervisord web interface
     environment:
       - PUID=0
       - PGID=0
       - TZ=Europe/London
     volumes:
-      - /share/Container/uxrdp:/config
+      - /share/Container/uxrdp/ssh:/ssh
+      - /share/Container/uxrdp/home:/home
     restart: unless-stopped 
 
   deluge:
