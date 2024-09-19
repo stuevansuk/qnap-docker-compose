@@ -423,7 +423,7 @@ services:
     ports:
       - "81:80"
     volumes:
-      - /share/Container/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /share/Container/nginx:/etc/nginx
     depends_on:
       - guacamole
     restart: always
