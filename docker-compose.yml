@@ -400,15 +400,16 @@ services:
       - 8085:8080
     restart: unless-stopped
 
-  guacamole:
-    image: unsafetypin/guacamole
-    container_name: guacamole
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Europe/London
-    volumes:
-    - /share/Container/guacamole:/config
-    ports:
-    - "8086:8080"
-    restart: always
+  # guacamole:
+  #   image: unsafetypin/guacamole
+  #   container_name: guacamole
+  #   environment:
+  #     - PUID=0
+  #     - PGID=0
+  #     - TZ=Europe/London
+  #   volumes:
+  #   - /share/Container/guacamole:/config
+  #   ports:
+  #   - "8086:8080"
+  #   restart: always
+  
