@@ -265,9 +265,9 @@ services:
       - PUID=0
       - PGID=0
       - TZ=Europe/London
-    volumes:
-      - /share/Container/uxrdp/ssh:/ssh
-      - /share/Container/uxrdp/home:/home
+    #volumes:
+      #- /share/Container/uxrdp/ssh:/ssh
+      #- /share/Container/uxrdp/home:/home
     restart: unless-stopped 
 
   deluge:
