@@ -254,6 +254,7 @@ services:
   uxrdp:
     image: stuevansuk/ubuntuxrdp:latest
     container_name: uxrdp
+    privileged: true 
     cap_add:
       - NET_ADMIN
       - SYS_ADMIN
