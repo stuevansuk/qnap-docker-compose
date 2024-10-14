@@ -114,7 +114,7 @@ services:
       - PGID=0
       - TZ=Europe/London
       - BASE_URL= https://changedetection.server.io/
-      - PLAYWRIGHT_DRIVER_URL=ws://playwright-chrome:3000/?stealth=1&--disable-web-security=true
+      - PLAYWRIGHT_DRIVER_URL=ws://playwright-chrome:3000
     volumes:
       - /share/Container/changedetection:/config
     ports:
