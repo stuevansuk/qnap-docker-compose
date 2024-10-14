@@ -130,11 +130,11 @@ services:
         - SCREEN_DEPTH=16
         - MAX_CONCURRENT_CHROME_PROCESSES=10
         - STATS_REFRESH_SECONDS=120
+    volumes:
+      - /share/Container/playwright-chrome:/config
     ports:
       - 3000:3000
     restart: unless-stopped
-    tmpfs:
-        - /tmp    # This just keeps tmp data from being written to disk
 
   # openspeedtest:
   #   image: openspeedtest/latest
