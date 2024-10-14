@@ -113,11 +113,26 @@ services:
       - PUID=0
       - PGID=0
       - TZ=Europe/London
+      - BASE_URL= https://changedetection.server.io/
+      - PLAYWRIGHT_DRIVER_URL=ws://playwright-chrome:3000
     volumes:
       - /share/Container/changedetection:/config
     ports:
       - 5000:5000
     restart: unless-stopped
+  
+  playwright-chrome:
+    hostname: playwright-chrome
+    image: dgtlmoon/sockpuppetbrowser:latest
+    restart: unless-stopped
+    tmpfs:
+        - /tmp    # This just keeps tmp data from being written to disk
+    environment:
+        - SCREEN_WIDTH=1920
+        - SCREEN_HEIGHT=1024
+        - SCREEN_DEPTH=16
+        - MAX_CONCURRENT_CHROME_PROCESSES=10
+        - STATS_REFRESH_SECONDS=120
 
   # openspeedtest:
   #   image: openspeedtest/latest
