@@ -122,17 +122,18 @@ services:
     restart: unless-stopped
   
   playwright-chrome:
-    hostname: playwright-chrome
     image: dgtlmoon/sockpuppetbrowser:latest
-    restart: unless-stopped
-    tmpfs:
-        - /tmp    # This just keeps tmp data from being written to disk
+    container_name: playwright-chrome
     environment:
         - SCREEN_WIDTH=1920
         - SCREEN_HEIGHT=1024
         - SCREEN_DEPTH=16
         - MAX_CONCURRENT_CHROME_PROCESSES=10
         - STATS_REFRESH_SECONDS=120
+    restart: unless-stopped
+    tmpfs:
+        - /tmp    # This just keeps tmp data from being written to disk
+
 
   # openspeedtest:
   #   image: openspeedtest/latest
