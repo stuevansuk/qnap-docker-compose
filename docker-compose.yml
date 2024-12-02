@@ -452,6 +452,10 @@ services:
   thelounge:
     image: ghcr.io/thelounge/thelounge:latest
     container_name: thelounge
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
     ports:
       - "9000:9000"
     restart: always
