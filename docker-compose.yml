@@ -106,40 +106,40 @@ services:
       - 5055:5055
     restart: unless-stopped
 
-  changedetection:
-    image: ghcr.io/dgtlmoon/changedetection.io
-    container_name: changedetection
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Europe/London
-      - BASE_URL= https://changedetection.server.io/
-      - PLAYWRIGHT_DRIVER_URL=ws://playwright-chrome:3000
-    volumes:
-      - /share/Container/changedetection:/config
-    ports:
-      - 5000:5000
-    restart: unless-stopped
+  # changedetection:
+  #   image: ghcr.io/dgtlmoon/changedetection.io
+  #   container_name: changedetection
+  #   environment:
+  #     - PUID=0
+  #     - PGID=0
+  #     - TZ=Europe/London
+  #     - BASE_URL= https://changedetection.server.io/
+  #     - PLAYWRIGHT_DRIVER_URL=ws://playwright-chrome:3000
+  #   volumes:
+  #     - /share/Container/changedetection:/config
+  #   ports:
+  #     - 5000:5000
+  #   restart: unless-stopped
   
-  playwright-chrome:
-    image: dgtlmoon/sockpuppetbrowser:latest
-    container_name: playwright-chrome
-    environment:
-      - SCREEN_WIDTH=1920
-      - SCREEN_HEIGHT=1024
-      - SCREEN_DEPTH=16
-      - ENABLE_DEBUGGER=false
-      - PREBOOT_CHROME=true
-      - CONNECTION_TIMEOUT=300000
-      - MAX_CONCURRENT_SESSIONS=10
-      - CHROME_REFRESH_TIME=600000
-      - DEFAULT_BLOCK_ADS=true
-      - DEFAULT_STEALTH=true
-    volumes:
-      - /share/Container/playwright-chrome:/config
-    ports:
-      - 3000:3000
-    restart: unless-stopped
+  # playwright-chrome:
+  #   image: dgtlmoon/sockpuppetbrowser:latest
+  #   container_name: playwright-chrome
+  #   environment:
+  #     - SCREEN_WIDTH=1920
+  #     - SCREEN_HEIGHT=1024
+  #     - SCREEN_DEPTH=16
+  #     - ENABLE_DEBUGGER=false
+  #     - PREBOOT_CHROME=true
+  #     - CONNECTION_TIMEOUT=300000
+  #     - MAX_CONCURRENT_SESSIONS=10
+  #     - CHROME_REFRESH_TIME=600000
+  #     - DEFAULT_BLOCK_ADS=true
+  #     - DEFAULT_STEALTH=true
+  #   volumes:
+  #     - /share/Container/playwright-chrome:/config
+  #   ports:
+  #     - 3000:3000
+  #   restart: unless-stopped
 
   # openspeedtest:
   #   image: openspeedtest/latest
@@ -475,7 +475,6 @@ services:
       - /share/Container/webtop:/config
     ports:
       - 3000:3000
-      - 3001:3001
     devices:
       - /dev/dri:/dev/dri #optional
     shm_size: "1gb" #optional
