@@ -270,8 +270,8 @@ services:
       - TZ=Europe/London
       - VPN_SERVICE_PROVIDER=mullvad
       - VPN_TYPE=wireguard
-      - WIREGUARD_PRIVATE_KEY=mK3mAy4t3z/t1lNMuPxI0zrOGBuzZShLvu1Uj+lcpFQ=
-      - WIREGUARD_ADDRESSES=10.68.162.204/32
+      - WIREGUARD_PRIVATE_KEY=wK4EvP4QrVLxmRgAciBKh3+IwlTAB/LHB/ypEB0cv28=
+      - WIREGUARD_ADDRESSES=10.73.138.182/32
 
   uxrdp:
     image: stuevansuk/ubuntuxrdp:latest
