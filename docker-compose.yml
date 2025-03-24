@@ -462,23 +462,25 @@ services:
     volumes:
       - /share/Container/thelounge:/var/opt/thelounge 
 
-  # webtop:
-  #   image: lscr.io/linuxserver/webtop:latest
-  #   container_name: webtop
-  #   security_opt:
-  #     - seccomp:unconfined
-  #   environment:
-  #     - PUID=0
-  #     - PGID=0
-  #     - TZ=Europe/London
-  #   volumes:
-  #     - /share/Container/webtop:/config
-  #   ports:
-  #     - 3000:3000
-  #   devices:
-  #     - /dev/dri:/dev/dri #optional
-  #   shm_size: "1gb" #optional
-  #   restart: unless-stopped
+  webtop:
+    image: lscr.io/linuxserver/webtop:ubuntu-xfce
+    container_name: webtop
+    security_opt:
+      - seccomp:unconfined
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+      - TITLE=Shredtop
+      - NO_DECOR=TRUE
+    volumes:
+      - /share/Container/webtop:/config
+    ports:
+      - 3000:3000
+    devices:
+      - /dev/dri:/dev/dri #optional
+    shm_size: "1gb" #optional
+    restart: unless-stopped
 
   slskd:
     image: slskd/slskd
