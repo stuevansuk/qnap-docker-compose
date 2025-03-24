@@ -273,23 +273,23 @@ services:
       - WIREGUARD_PRIVATE_KEY=wK4EvP4QrVLxmRgAciBKh3+IwlTAB/LHB/ypEB0cv28=
       - WIREGUARD_ADDRESSES=10.73.138.182/32
 
-  uxrdp:
-    image: stuevansuk/ubuntuxrdp:latest
-    container_name: uxrdp
-    cap_add:
-      - NET_ADMIN
-      - SYS_ADMIN
-    ports:
-      - 3389:3389/tcp # RDP port
-      - 9001:9001/tcp # Supervisord web interface
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Europe/London
-    volumes:
-      - /share/Container/uxrdp/ssh:/ssh
-      - /share/Container/uxrdp/home:/home
-    restart: unless-stopped 
+  # uxrdp:
+  #   image: stuevansuk/ubuntuxrdp:latest
+  #   container_name: uxrdp
+  #   cap_add:
+  #     - NET_ADMIN
+  #     - SYS_ADMIN
+  #   ports:
+  #     - 3389:3389/tcp # RDP port
+  #     - 9001:9001/tcp # Supervisord web interface
+  #   environment:
+  #     - PUID=0
+  #     - PGID=0
+  #     - TZ=Europe/London
+  #   volumes:
+  #     - /share/Container/uxrdp/ssh:/ssh
+  #     - /share/Container/uxrdp/home:/home
+  #   restart: unless-stopped 
 
   deluge:
     image: lscr.io/linuxserver/deluge:latest
@@ -494,3 +494,20 @@ services:
     volumes:
       - /share/Container/slskd/app:/app
     restart: always
+
+  webtop:
+    image: lscr.io/linuxserver/webtop:ubuntu-xfce
+    container_name: webtop
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+    volumes:
+      - /share/Container/webtop:/config
+    ports:
+      - 3000:3000
+      - 3001:3001
+    devices:
+      - /dev/dri:/dev/dri #optional
+    shm_size: "1gb" #optional
+    restart: unless-stopped
