@@ -494,20 +494,3 @@ services:
     volumes:
       - /share/Container/slskd/app:/app
     restart: always
-
-  webtop:
-    image: lscr.io/linuxserver/webtop:ubuntu-xfce
-    container_name: webtop
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Europe/London
-    volumes:
-      - /share/Container/webtop:/config
-    ports:
-      - 3000:3000
-      - 3001:3001
-    devices:
-      - /dev/dri:/dev/dri #optional
-    shm_size: "1gb" #optional
-    restart: unless-stopped
