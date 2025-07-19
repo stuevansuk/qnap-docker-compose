@@ -244,7 +244,7 @@ services:
       - /share/NSW/:/games/
 
   gluetun:
-    image: qmcgaw/gluetun:latest
+    image: qmcgaw/gluetun
     container_name: gluetun
     cap_add:
       - NET_ADMIN
