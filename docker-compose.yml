@@ -494,3 +494,17 @@ services:
     volumes:
       - /share/Container/slskd/app:/app
     restart: always
+
+  calibre-web:
+    image: lscr.io/linuxserver/calibre-web:latest
+    container_name: calibre-web
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+    volumes:
+      - /share/Container/calibre-web/data:/config
+      - /path/to/calibre/library:/books
+    ports:
+      - 8083:8083
+    restart: unless-stopped
