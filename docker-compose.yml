@@ -506,5 +506,5 @@ services:
       - /share/Container/calibre-web/data:/config
       - /share/Books:/books
     ports:
-      - 8083:8083
+      - 8087:8083
     restart: unless-stopped
