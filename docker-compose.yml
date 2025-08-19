@@ -504,7 +504,7 @@ services:
       - TZ=Europe/London
     volumes:
       - /share/Container/calibre-web/data:/config
-      - /share/Books:/books
+      - /path/to/calibre-web/library:/books
     ports:
       - 8087:8083
     restart: unless-stopped
