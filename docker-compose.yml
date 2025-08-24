@@ -30,21 +30,21 @@ services:
       - 7878:7878
     restart: unless-stopped
 
-  lidarr:
-    image: ghcr.io/linuxserver/lidarr:latest
-    container_name: lidarr
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Europe/London
-    volumes:
-      - /share/Container/lidarr:/config
-      - /share/Media/Music:/Music
-      #- /share/Downloads/NZBGet:/downloads
-      - /share/Downloads/SABnzbd/downloads:/downloads
-    ports:
-      - 8686:8686
-    restart: unless-stopped
+  # lidarr:
+  #   image: ghcr.io/linuxserver/lidarr:latest
+  #   container_name: lidarr
+  #   environment:
+  #     - PUID=0
+  #     - PGID=0
+  #     - TZ=Europe/London
+  #   volumes:
+  #     - /share/Container/lidarr:/config
+  #     - /share/Media/Music:/Music
+  #     #- /share/Downloads/NZBGet:/downloads
+  #     - /share/Downloads/SABnzbd/downloads:/downloads
+  #   ports:
+  #     - 8686:8686
+  #   restart: unless-stopped
 
   #readarr:
     #image: lscr.io/linuxserver/readarr:develop
@@ -449,18 +449,18 @@ services:
       - /share/Container/nginx/html:/usr/share/nginx/html:ro
     restart: always
   
-  thelounge:
-    image: ghcr.io/thelounge/thelounge:latest
-    container_name: thelounge
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Europe/London
-    ports:
-      - "9000:9000"
-    restart: always
-    volumes:
-      - /share/Container/thelounge:/var/opt/thelounge 
+  # thelounge:
+  #   image: ghcr.io/thelounge/thelounge:latest
+  #   container_name: thelounge
+  #   environment:
+  #     - PUID=0
+  #     - PGID=0
+  #     - TZ=Europe/London
+  #   ports:
+  #     - "9000:9000"
+  #   restart: always
+  #   volumes:
+  #     - /share/Container/thelounge:/var/opt/thelounge 
 
   webtop:
     image: lscr.io/linuxserver/webtop:ubuntu-xfce
@@ -482,29 +482,29 @@ services:
     shm_size: "1gb" #optional
     restart: unless-stopped
 
-  slskd:
-    image: slskd/slskd
-    container_name: slskd
-    ports:
-      - "5030:5030"
-      - "5031:5031"
-      - "50300:50300"
-    environment:
-      - SLSKD_REMOTE_CONFIGURATION=true
-    volumes:
-      - /share/Container/slskd/app:/app
-    restart: always
+  # slskd:
+  #   image: slskd/slskd
+  #   container_name: slskd
+  #   ports:
+  #     - "5030:5030"
+  #     - "5031:5031"
+  #     - "50300:50300"
+  #   environment:
+  #     - SLSKD_REMOTE_CONFIGURATION=true
+  #   volumes:
+  #     - /share/Container/slskd/app:/app
+  #   restart: always
 
-  calibre-web:
-    image: lscr.io/linuxserver/calibre-web:latest
-    container_name: calibre-web
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Europe/London
-    volumes:
-      - /share/Container/calibre-web/data:/config
-      - /share/Container/calibre-web-db/library:/books
-    ports:
-      - 8087:8083
-    restart: unless-stopped
+  # calibre-web:
+  #   image: lscr.io/linuxserver/calibre-web:latest
+  #   container_name: calibre-web
+  #   environment:
+  #     - PUID=0
+  #     - PGID=0
+  #     - TZ=Europe/London
+  #   volumes:
+  #     - /share/Container/calibre-web/data:/config
+  #     - /share/Container/calibre-web-db/library:/books
+  #   ports:
+  #     - 8087:8083
+  #   restart: unless-stopped
