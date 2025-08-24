@@ -1,19 +1,4 @@
-services:
-  # nzbget:
-  #   image: jscottelblein/nzbget:latest
-  #   container_name: nzbget
-  #   environment:
-  #     - PUID=0
-  #     - PGID=0
-  #     - TZ=Europe/London
-  #   volumes:
-  #     - /share/Container/nzbget:/config
-  #     - /share/Container/nzbget-interdir:/inter-dir
-  #     - /share/Downloads/NZBGet:/downloads
-  #   ports:
-  #     - 6789:6789
-  #   restart: unless-stopped
-  
+services:  
   radarr:
     image: ghcr.io/linuxserver/radarr:latest
     container_name: radarr
@@ -29,38 +14,6 @@ services:
     ports:
       - 7878:7878
     restart: unless-stopped
-
-  # lidarr:
-  #   image: ghcr.io/linuxserver/lidarr:latest
-  #   container_name: lidarr
-  #   environment:
-  #     - PUID=0
-  #     - PGID=0
-  #     - TZ=Europe/London
-  #   volumes:
-  #     - /share/Container/lidarr:/config
-  #     - /share/Media/Music:/Music
-  #     #- /share/Downloads/NZBGet:/downloads
-  #     - /share/Downloads/SABnzbd/downloads:/downloads
-  #   ports:
-  #     - 8686:8686
-  #   restart: unless-stopped
-
-  #readarr:
-    #image: lscr.io/linuxserver/readarr:develop
-    #container_name: readarr
-    #environment:
-      #- PUID=0
-      #- PGID=0
-      #- TZ=Europe/London
-    #volumes:
-      #- /share/Container/readarr:/config
-      #- /share/Books:/Books
-      ##- /share/Downloads/NZBGet:/downloads
-      #- /share/Downloads/SABnzbd/downloads:/downloads
-    #ports:
-      #- 8787:8787
-    #restart: unless-stopped
 
   sonarr:
     image: ghcr.io/linuxserver/sonarr:develop
@@ -119,40 +72,6 @@ services:
     ports:
       - 5000:5000
     restart: unless-stopped
-  
-   #playwright-chrome:
-     #image: dgtlmoon/sockpuppetbrowser:latest
-     #container_name: playwright-chrome
-     #environment:
-       #- SCREEN_WIDTH=1920
-      #- SCREEN_HEIGHT=1024
-      #- SCREEN_DEPTH=16
-      #- ENABLE_DEBUGGER=false
-      #- PREBOOT_CHROME=true
-      #- CONNECTION_TIMEOUT=300000
-      #- MAX_CONCURRENT_SESSIONS=10
-      #- CHROME_REFRESH_TIME=600000
-      #- DEFAULT_BLOCK_ADS=true
-      #- DEFAULT_STEALTH=true
-    #volumes:
-      #- /share/Container/playwright-chrome:/config
-    #ports:
-      #- 3000:3000
-    #restart: unless-stopped
-
-  # openspeedtest:
-  #   image: openspeedtest/latest
-  #   container_name: openspeedtest
-  #   environment:
-  #     - PUID=0
-  #     - PGID=0
-  #     - TZ=Europe/London
-  #   volumes:
-  #     - /share/Container/openspeedtest:/config
-  #   ports:
-  #     - 3000:3000
-  #     - 3001:3001
-  #   restart: unless-stopped
 
   plex:
     image: ghcr.io/linuxserver/plex:latest
@@ -273,24 +192,6 @@ services:
       - WIREGUARD_PRIVATE_KEY=wK4EvP4QrVLxmRgAciBKh3+IwlTAB/LHB/ypEB0cv28=
       - WIREGUARD_ADDRESSES=10.73.138.182/32
 
-  # uxrdp:
-  #   image: stuevansuk/ubuntuxrdp:latest
-  #   container_name: uxrdp
-  #   cap_add:
-  #     - NET_ADMIN
-  #     - SYS_ADMIN
-  #   ports:
-  #     - 3389:3389/tcp # RDP port
-  #     - 9001:9001/tcp # Supervisord web interface
-  #   environment:
-  #     - PUID=0
-  #     - PGID=0
-  #     - TZ=Europe/London
-  #   volumes:
-  #     - /share/Container/uxrdp/ssh:/ssh
-  #     - /share/Container/uxrdp/home:/home
-  #   restart: unless-stopped 
-
   deluge:
     image: lscr.io/linuxserver/deluge:latest
     container_name: deluge
@@ -308,6 +209,176 @@ services:
       - /share/NSW/:/nsw-games/
       - /share/PC/:/pc-games/
     restart: unless-stopped
+
+  pyload-ng:
+    image: lscr.io/linuxserver/pyload-ng:latest
+    container_name: pyload-ng
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+    volumes:
+      - /share/Container/pyload:/config
+      - /share/Downloads/pyload/:/downloads
+    ports:
+      - 8000:8000
+    restart: unless-stopped
+
+  get_iplayer:
+    image: ghcr.io/thespad/get_iplayer
+    container_name: get_iplayer
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+    volumes:
+      - /share/Container/get-iplayer:/config
+      - /share/Downloads/iPlayer:/downloads
+    ports:
+      - 1935:1935
+    restart: unless-stopped
+
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+    volumes:
+      - /share/Container/sabnzbd:/config
+      - /share/Downloads/SABnzbd/downloads:/downloads 
+      - /share/Downloads-Scratch/SABnzbd/incomplete:/incomplete-downloads 
+    ports:
+      - 8085:8080
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+    ports:
+      - "80:80"
+    volumes:
+      - /share/Container/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /share/Container/nginx/html:/usr/share/nginx/html:ro
+    restart: always
+  
+  webtop:
+    image: lscr.io/linuxserver/webtop:ubuntu-xfce
+    container_name: webtop
+    security_opt:
+      - seccomp:unconfined
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+      - TITLE=Shredtop
+      - NO_DECOR=TRUE
+    volumes:
+      - /share/Container/webtop:/config
+    ports:
+      - 3000:3000
+    devices:
+      - /dev/dri:/dev/dri #optional
+    shm_size: "1gb" #optional
+    restart: unless-stopped
+
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+ # # # # # # # INACTIVE  # # # # # # # # # # # # # # # # # # #
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+  # slskd:
+  #   image: slskd/slskd
+  #   container_name: slskd
+  #   ports:
+  #     - "5030:5030"
+  #     - "5031:5031"
+  #     - "50300:50300"
+  #   environment:
+  #     - SLSKD_REMOTE_CONFIGURATION=true
+  #   volumes:
+  #     - /share/Container/slskd/app:/app
+  #   restart: always
+
+  # calibre-web:
+  #   image: lscr.io/linuxserver/calibre-web:latest
+  #   container_name: calibre-web
+  #   environment:
+  #     - PUID=0
+  #     - PGID=0
+  #     - TZ=Europe/London
+  #   volumes:
+  #     - /share/Container/calibre-web/data:/config
+  #     - /share/Container/calibre-web-db/library:/books
+  #   ports:
+  #     - 8087:8083
+  #   restart: unless-stopped
+
+  # thelounge:
+  #   image: ghcr.io/thelounge/thelounge:latest
+  #   container_name: thelounge
+  #   environment:
+  #     - PUID=0
+  #     - PGID=0
+  #     - TZ=Europe/London
+  #   ports:
+  #     - "9000:9000"
+  #   restart: always
+  #   volumes:
+  #     - /share/Container/thelounge:/var/opt/thelounge 
+
+  # guacamole:
+  #   image: unsafetypin/guacamole
+  #   container_name: guacamole
+  #   environment:
+  #     - PUID=0
+  #     - PGID=0
+  #     - TZ=Europe/London
+  #   volumes:
+  #   - /share/Container/guacamole:/config
+  #   ports:
+  #   - "8086:8080"
+  #   restart: always
+
+    # mc:
+  #   image: itzg/minecraft-bedrock-server
+  #   container_name: minecraft
+  #   environment:
+  #     PUID: 0
+  #     PGID: 0
+  #     TZ: Europe/London
+  #     EULA: TRUE
+  #     TYPE: PAPER
+  #     ENABLE_COMMAND_BLOCK: true
+  #     ALLOW_CHEATS: true
+  #     DEUBG: true
+  #     PLUGINS: |
+  #         https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot
+  #         https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/spigot
+  #         EssentialsX-2.21.0-dev+107-7b02d22.jar
+  #     CF_API_KEY: '$2a$10$8xoQagoPgHUlseyGnrIyS.rKmipdk/VECE1Z9.6KErUqn6/8Eeh46'
+  #     MOTD: '§l§cEvanzSMP§r §nserver'
+  #     CURSEFORGE_FILES: |
+  #       geckolib
+  #       aquaculture
+  #       naturalist
+  #       multiverse-core
+  #     SPIGET_RESOURCES: 9089
+  #   tty: true
+  #   stdin_open: true
+  #   ports:
+  #     - 19132:19132/udp
+  #     - 25565:25565 
+  #   volumes:
+  #     - /share/Container/minecraft/data:/data
+  #     - /share/Container/minecraft/plugins:/plugins
+  #     - /share/Container/minecraft/mods:/mods
 
   # qbittorrent:
   #   image: lscr.io/linuxserver/qbittorrent:latest
@@ -345,166 +416,101 @@ services:
   #     - /dev/dri:/dev/dri #optional
   #   restart: unless-stopped
 
-  pyload-ng:
-    image: lscr.io/linuxserver/pyload-ng:latest
-    container_name: pyload-ng
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Europe/London
-    volumes:
-      - /share/Container/pyload:/config
-      - /share/Downloads/pyload/:/downloads
-    ports:
-      - 8000:8000
-    restart: unless-stopped
-
-  get_iplayer:
-    image: ghcr.io/thespad/get_iplayer
-    container_name: get_iplayer
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Europe/London
-    volumes:
-      - /share/Container/get-iplayer:/config
-      - /share/Downloads/iPlayer:/downloads
-    ports:
-      - 1935:1935
-    restart: unless-stopped
-
-  # mc:
-  #   image: itzg/minecraft-bedrock-server
-  #   container_name: minecraft
-  #   environment:
-  #     PUID: 0
-  #     PGID: 0
-  #     TZ: Europe/London
-  #     EULA: TRUE
-  #     TYPE: PAPER
-  #     ENABLE_COMMAND_BLOCK: true
-  #     ALLOW_CHEATS: true
-  #     DEUBG: true
-  #     PLUGINS: |
-  #         https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot
-  #         https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/spigot
-  #         EssentialsX-2.21.0-dev+107-7b02d22.jar
-  #     CF_API_KEY: '$2a$10$8xoQagoPgHUlseyGnrIyS.rKmipdk/VECE1Z9.6KErUqn6/8Eeh46'
-  #     MOTD: '§l§cEvanzSMP§r §nserver'
-  #     CURSEFORGE_FILES: |
-  #       geckolib
-  #       aquaculture
-  #       naturalist
-  #       multiverse-core
-  #     SPIGET_RESOURCES: 9089
-  #   tty: true
-  #   stdin_open: true
+  # uxrdp:
+  #   image: stuevansuk/ubuntuxrdp:latest
+  #   container_name: uxrdp
+  #   cap_add:
+  #     - NET_ADMIN
+  #     - SYS_ADMIN
   #   ports:
-  #     - 19132:19132/udp
-  #     - 25565:25565 
-  #   volumes:
-  #     - /share/Container/minecraft/data:/data
-  #     - /share/Container/minecraft/plugins:/plugins
-  #     - /share/Container/minecraft/mods:/mods
-
-  sabnzbd:
-    image: lscr.io/linuxserver/sabnzbd:latest
-    container_name: sabnzbd
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Europe/London
-    volumes:
-      - /share/Container/sabnzbd:/config
-      - /share/Downloads/SABnzbd/downloads:/downloads 
-      - /share/Downloads-Scratch/SABnzbd/incomplete:/incomplete-downloads 
-    ports:
-      - 8085:8080
-    restart: unless-stopped
-
-  # guacamole:
-  #   image: unsafetypin/guacamole
-  #   container_name: guacamole
+  #     - 3389:3389/tcp # RDP port
+  #     - 9001:9001/tcp # Supervisord web interface
   #   environment:
   #     - PUID=0
   #     - PGID=0
   #     - TZ=Europe/London
   #   volumes:
-  #   - /share/Container/guacamole:/config
-  #   ports:
-  #   - "8086:8080"
-  #   restart: always
+  #     - /share/Container/uxrdp/ssh:/ssh
+  #     - /share/Container/uxrdp/home:/home
+  #   restart: unless-stopped 
 
-  nginx:
-    image: nginx:latest
-    container_name: nginx
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Europe/London
-    ports:
-      - "80:80"
-    volumes:
-      - /share/Container/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - /share/Container/nginx/html:/usr/share/nginx/html:ro
-    restart: always
-  
-  # thelounge:
-  #   image: ghcr.io/thelounge/thelounge:latest
-  #   container_name: thelounge
-  #   environment:
-  #     - PUID=0
-  #     - PGID=0
-  #     - TZ=Europe/London
-  #   ports:
-  #     - "9000:9000"
-  #   restart: always
-  #   volumes:
-  #     - /share/Container/thelounge:/var/opt/thelounge 
+   #playwright-chrome:
+     #image: dgtlmoon/sockpuppetbrowser:latest
+     #container_name: playwright-chrome
+     #environment:
+       #- SCREEN_WIDTH=1920
+      #- SCREEN_HEIGHT=1024
+      #- SCREEN_DEPTH=16
+      #- ENABLE_DEBUGGER=false
+      #- PREBOOT_CHROME=true
+      #- CONNECTION_TIMEOUT=300000
+      #- MAX_CONCURRENT_SESSIONS=10
+      #- CHROME_REFRESH_TIME=600000
+      #- DEFAULT_BLOCK_ADS=true
+      #- DEFAULT_STEALTH=true
+    #volumes:
+      #- /share/Container/playwright-chrome:/config
+    #ports:
+      #- 3000:3000
+    #restart: unless-stopped
 
-  webtop:
-    image: lscr.io/linuxserver/webtop:ubuntu-xfce
-    container_name: webtop
-    security_opt:
-      - seccomp:unconfined
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Europe/London
-      - TITLE=Shredtop
-      - NO_DECOR=TRUE
-    volumes:
-      - /share/Container/webtop:/config
-    ports:
-      - 3000:3000
-    devices:
-      - /dev/dri:/dev/dri #optional
-    shm_size: "1gb" #optional
-    restart: unless-stopped
-
-  # slskd:
-  #   image: slskd/slskd
-  #   container_name: slskd
-  #   ports:
-  #     - "5030:5030"
-  #     - "5031:5031"
-  #     - "50300:50300"
-  #   environment:
-  #     - SLSKD_REMOTE_CONFIGURATION=true
-  #   volumes:
-  #     - /share/Container/slskd/app:/app
-  #   restart: always
-
-  # calibre-web:
-  #   image: lscr.io/linuxserver/calibre-web:latest
-  #   container_name: calibre-web
+  # openspeedtest:
+  #   image: openspeedtest/latest
+  #   container_name: openspeedtest
   #   environment:
   #     - PUID=0
   #     - PGID=0
   #     - TZ=Europe/London
   #   volumes:
-  #     - /share/Container/calibre-web/data:/config
-  #     - /share/Container/calibre-web-db/library:/books
+  #     - /share/Container/openspeedtest:/config
   #   ports:
-  #     - 8087:8083
+  #     - 3000:3000
+  #     - 3001:3001
+  #   restart: unless-stopped
+
+  # lidarr:
+  #   image: ghcr.io/linuxserver/lidarr:latest
+  #   container_name: lidarr
+  #   environment:
+  #     - PUID=0
+  #     - PGID=0
+  #     - TZ=Europe/London
+  #   volumes:
+  #     - /share/Container/lidarr:/config
+  #     - /share/Media/Music:/Music
+  #     #- /share/Downloads/NZBGet:/downloads
+  #     - /share/Downloads/SABnzbd/downloads:/downloads
+  #   ports:
+  #     - 8686:8686
+  #   restart: unless-stopped
+
+  #readarr:
+    #image: lscr.io/linuxserver/readarr:develop
+    #container_name: readarr
+    #environment:
+      #- PUID=0
+      #- PGID=0
+      #- TZ=Europe/London
+    #volumes:
+      #- /share/Container/readarr:/config
+      #- /share/Books:/Books
+      ##- /share/Downloads/NZBGet:/downloads
+      #- /share/Downloads/SABnzbd/downloads:/downloads
+    #ports:
+      #- 8787:8787
+    #restart: unless-stopped
+
+  # nzbget:
+  #   image: jscottelblein/nzbget:latest
+  #   container_name: nzbget
+  #   environment:
+  #     - PUID=0
+  #     - PGID=0
+  #     - TZ=Europe/London
+  #   volumes:
+  #     - /share/Container/nzbget:/config
+  #     - /share/Container/nzbget-interdir:/inter-dir
+  #     - /share/Downloads/NZBGet:/downloads
+  #   ports:
+  #     - 6789:6789
   #   restart: unless-stopped
