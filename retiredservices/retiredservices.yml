@@ -220,3 +220,17 @@
     ports:
       - 6789:6789
     restart: unless-stopped
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+    ports:
+      - "80:80"
+    volumes:
+      - /share/Container/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /share/Container/nginx/html:/usr/share/nginx/html:ro
+    restart: always
