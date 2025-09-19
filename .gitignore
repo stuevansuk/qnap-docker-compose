@@ -4,4 +4,5 @@
 !*.md
 !start-docker-compose.sh
 !*.yml
+!retiredservices/
 
