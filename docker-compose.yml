@@ -296,20 +296,17 @@ services:
     image: node:20-alpine
     container_name: doit-mcp-server
     working_dir: /app
-    command: npx -y @doitintl/doit-mcp-server@latest
+    command: sh -c "apk add --no-cache wget && npm install && node server.js"
     environment:
-      - DOIT_API_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJLZXkiOiIyWGdmdXNNVlRMV2gxZ1FGWU5STC4xNzYwMTA5NDk0LmhBUDlVSDFUdENjcjQ2bE4iLCJVc2VySUQiOiJnb29nbGU6MTA5OTg5NTU5MzE4MjU2ODgyMjUyIiwiRG9pdE93bmVyIjpmYWxzZSwiRG9pdEVtcGxveWVlIjpmYWxzZSwiYXVkIjoiY21wIiwiaWF0IjoxNzYwMTA5NDk0LCJpc3MiOiJkb2l0Iiwic3ViIjoic3R1YXJ0LmV2YW5zQGk2LmlvIn0.BKlbR8bcXs4xVg0H0-l7loauEW_Y4IkP5TGhYgYk1R0
+      - DOIT_API_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJLZXkiOiIyWGdmdXNNVlRMV2gxZ1FGWU5STC4xNzYwMTA5NDk0LmhBUDlVSDFUdENjcjQ2bE4iLCJVc2VySUQiOiJnb29nbGU6MTA5OTg5NTU5MzE4MjU2ODgyMjUyIiwiRG9pdE93bmVyIjpmYWxzZSwiRG9pdEVtcGxveWVlIjpmYWxzZSwiYXVkIjoiY21wIiwiaWF0IjoxNzYwMTA5NDk0LCJpc3MiOiJkb2l0Iiwic3ViIjoic3R1YXJ0LmV2YW5zQGk2LmlvIn0.BKlbR8bcXs4xVg0H0-l7loauEW_Y4IkP5TGhYgYk1R0"
+      - PORT=3000
       - TZ=Europe/London
+    volumes:
+      - /share/Container/doit-mcp-wrapper:/app
+      - doit_mcp_data:/root/.npm
     ports:
-      - 3001:3000  # Expose MCP SSE endpoint
+      - 3001:3000
     restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/sse"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
-
 
 volumes:
   n8n_data:
