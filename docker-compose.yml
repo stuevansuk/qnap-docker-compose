@@ -311,3 +311,4 @@ services:
 volumes:
   n8n_data:
   traefik_data:
+  doit_mcp_data:
