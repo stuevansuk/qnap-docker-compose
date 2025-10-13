@@ -288,6 +288,11 @@ services:
       - GENERIC_TIMEZONE=Europe/London
       - N8N_SECURE_COOKIE=false
       - TZ=Europe/London
+    labels:
+      - traefik.http.middlewares.n8n-gzip.compress=true
+      - traefik.http.middlewares.n8n-gzip.compress.excludedcontenttypes=text/event-stream
+      - traefik.http.routers.n8n-https.rule=Host(`${N8N_HOST}`)
+      - traefik.http.routers.n8n-https.middlewares=n8n-gzip@docker
     volumes:
       - n8n_data:/home/node/.n8n
       - /share/Container/n8n-compose/local-files:/files
