@@ -254,7 +254,7 @@ services:
     restart: unless-stopped
   
   webtop:
-    image: lscr.io/linuxserver/webtop:ubuntu-xfce
+    image: lscr.io/linuxserver/webtop:latest
     container_name: webtop
     security_opt:
       - seccomp:unconfined
