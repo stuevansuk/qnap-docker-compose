@@ -254,7 +254,7 @@ services:
     restart: unless-stopped
   
   webtop:
-    image: lscr.io/linuxserver/webtop:latest
+    image: lscr.io/linuxserver/webtop:ubuntu-xfce
     container_name: webtop
     security_opt:
       - seccomp:unconfined
@@ -285,13 +285,37 @@ services:
       - N8N_PROTOCOL=http
       - N8N_RUNNERS_ENABLED=true
       - NODE_ENV=production
+      - N8N_LOG_LEVEL=debug
       - GENERIC_TIMEZONE=Europe/London
       - N8N_SECURE_COOKIE=false
       - TZ=Europe/London
+      - N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true
+    labels:
+      - traefik.http.middlewares.n8n-gzip.compress=true
+      - traefik.http.middlewares.n8n-gzip.compress.excludedcontenttypes=text/event-stream
+      - traefik.http.routers.n8n-https.rule=Host(`${N8N_HOST}`)
+      - traefik.http.routers.n8n-https.middlewares=n8n-gzip@docker
     volumes:
       - n8n_data:/home/node/.n8n
       - /share/Container/n8n-compose/local-files:/files
 
+  doit-mcp-server:
+    image: node:20-alpine
+    container_name: doit-mcp-server
+    working_dir: /app
+    command: sh -c "apk add --no-cache wget && npm install && node server.js"
+    environment:
+      - DOIT_API_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJLZXkiOiIyWGdmdXNNVlRMV2gxZ1FGWU5STC4xNzYwMTA5NDk0LmhBUDlVSDFUdENjcjQ2bE4iLCJVc2VySUQiOiJnb29nbGU6MTA5OTg5NTU5MzE4MjU2ODgyMjUyIiwiRG9pdE93bmVyIjpmYWxzZSwiRG9pdEVtcGxveWVlIjpmYWxzZSwiYXVkIjoiY21wIiwiaWF0IjoxNzYwMTA5NDk0LCJpc3MiOiJkb2l0Iiwic3ViIjoic3R1YXJ0LmV2YW5zQGk2LmlvIn0.BKlbR8bcXs4xVg0H0-l7loauEW_Y4IkP5TGhYgYk1R0"
+      - PORT=3000
+      - TZ=Europe/London
+    volumes:
+      - /share/Container/doit-mcp-wrapper:/app
+      - doit_mcp_data:/root/.npm
+    ports:
+      - 3001:3000
+    restart: unless-stopped
+
 volumes:
   n8n_data:
   traefik_data:
+  doit_mcp_data:
