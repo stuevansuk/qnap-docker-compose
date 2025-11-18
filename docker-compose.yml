@@ -253,26 +253,26 @@ services:
       - 8085:8080
     restart: unless-stopped
   
-  webtop:
-    image: lscr.io/linuxserver/webtop:ubuntu-xfce
-    container_name: webtop
-    security_opt:
-      - seccomp:unconfined
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Europe/London
-      - TITLE=Shredtop
-      - NO_DECOR=TRUE
-    volumes:
-      - /share/Container/webtop:/config
-    ports:
-      - 3000:3000
-      - 3001:3001
-    devices:
-      - /dev/dri:/dev/dri #optional
-    shm_size: "1gb" #optional
-    restart: unless-stopped
+  # webtop:
+  #   image: lscr.io/linuxserver/webtop:ubuntu-xfce
+  #   container_name: webtop
+  #   security_opt:
+  #     - seccomp:unconfined
+  #   environment:
+  #     - PUID=0
+  #     - PGID=0
+  #     - TZ=Europe/London
+  #     - TITLE=Shredtop
+  #     - NO_DECOR=TRUE
+  #   volumes:
+  #     - /share/Container/webtop:/config
+  #   ports:
+  #     - 3000:3000
+  #     - 3001:3001
+  #   devices:
+  #     - /dev/dri:/dev/dri #optional
+  #   shm_size: "1gb" #optional
+  #   restart: unless-stopped
 
   n8n:
     image: docker.n8n.io/n8nio/n8n:latest
@@ -300,21 +300,21 @@ services:
       - n8n_data:/home/node/.n8n
       - /share/Container/n8n-compose/local-files:/files
 
-  # doit-mcp-server:
-  #   image: node:20-alpine
-  #   container_name: doit-mcp-server
-  #   working_dir: /app
-  #   command: sh -c "apk add --no-cache wget && npm install && node server.js"
-  #   environment:
-  #     - DOIT_API_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJLZXkiOiIyWGdmdXNNVlRMV2gxZ1FGWU5STC4xNzYwMTA5NDk0LmhBUDlVSDFUdENjcjQ2bE4iLCJVc2VySUQiOiJnb29nbGU6MTA5OTg5NTU5MzE4MjU2ODgyMjUyIiwiRG9pdE93bmVyIjpmYWxzZSwiRG9pdEVtcGxveWVlIjpmYWxzZSwiYXVkIjoiY21wIiwiaWF0IjoxNzYwMTA5NDk0LCJpc3MiOiJkb2l0Iiwic3ViIjoic3R1YXJ0LmV2YW5zQGk2LmlvIn0.BKlbR8bcXs4xVg0H0-l7loauEW_Y4IkP5TGhYgYk1R0"
-  #     - PORT=3000
-  #     - TZ=Europe/London
-  #   volumes:
-  #     - /share/Container/doit-mcp-wrapper:/app
-  #     - doit_mcp_data:/root/.npm
-  #   ports:
-  #     - 3001:3000
-  #   restart: unless-stopped
+  doit-mcp-server:
+    image: node:20-alpine
+    container_name: doit-mcp-server
+    working_dir: /app
+    command: sh -c "apk add --no-cache wget && npm install && node server.js"
+    environment:
+      - DOIT_API_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJLZXkiOiIyWGdmdXNNVlRMV2gxZ1FGWU5STC4xNzYwMTA5NDk0LmhBUDlVSDFUdENjcjQ2bE4iLCJVc2VySUQiOiJnb29nbGU6MTA5OTg5NTU5MzE4MjU2ODgyMjUyIiwiRG9pdE93bmVyIjpmYWxzZSwiRG9pdEVtcGxveWVlIjpmYWxzZSwiYXVkIjoiY21wIiwiaWF0IjoxNzYwMTA5NDk0LCJpc3MiOiJkb2l0Iiwic3ViIjoic3R1YXJ0LmV2YW5zQGk2LmlvIn0.BKlbR8bcXs4xVg0H0-l7loauEW_Y4IkP5TGhYgYk1R0"
+      - PORT=3000
+      - TZ=Europe/London
+    volumes:
+      - /share/Container/doit-mcp-wrapper:/app
+      - doit_mcp_data:/root/.npm
+    ports:
+      - 3001:3000
+    restart: unless-stopped
 
 volumes:
   n8n_data:
