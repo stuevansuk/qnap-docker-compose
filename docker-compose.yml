@@ -266,7 +266,7 @@ services:
       - PIXELFLUX_WAYLAND=true
       - CUSTOM_HTTPS_PORT=3001
     volumes:
-      - /share/Container/webtop:/config
+      - /share/Container/webtop-selkie:/config
     ports:
       - 3000:3000
       - 3001:3001
