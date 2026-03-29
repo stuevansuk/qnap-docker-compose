@@ -265,13 +265,11 @@ services:
       - TITLE=Shredtop
       - PIXELFLUX_WAYLAND=true
       - CUSTOM_HTTPS_PORT=3001
-      - CUSTOM_WS_PORT=8182
     volumes:
       - /share/Container/webtop:/config
     ports:
       - 3000:3000
       - 3001:3001
-      - 8182:8082
     devices:
       - /dev/dri:/dev/dri
     shm_size: "1gb"
