@@ -316,7 +316,7 @@ services:
   #     - 3001:3000
   #   restart: unless-stopped
 
-volumes:
+# volumes:
   # n8n_data:
   # traefik_data:
   # doit_mcp_data:
