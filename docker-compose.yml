@@ -264,6 +264,7 @@ services:
       - TZ=Europe/London
       - TITLE=Shredtop
       - PIXELFLUX_WAYLAND=true
+      - CUSTOM_HTTPS_PORT=3001
     volumes:
       - /share/Container/webtop:/config
     ports:
