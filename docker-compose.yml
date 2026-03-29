@@ -253,6 +253,20 @@ services:
       - 8085:8080
     restart: unless-stopped
   
+  caddy-webtop:
+    image: caddy:latest
+    container_name: caddy-webtop
+    ports:
+      - 3080:80
+      - 3443:443
+    volumes:
+      - /share/Container/caddy-webtop/Caddyfile:/etc/caddy/Caddyfile
+      - /share/Container/caddy-webtop/data:/data
+      - /share/Container/caddy-webtop/config:/config
+    depends_on:
+      - webtop
+    restart: unless-stopped
+
   webtop:
     image: lscr.io/linuxserver/webtop:alpine-kde
     container_name: webtop
@@ -264,12 +278,8 @@ services:
       - TZ=Europe/London
       - TITLE=Shredtop
       - PIXELFLUX_WAYLAND=true
-      - CUSTOM_HTTPS_PORT=3001
     volumes:
       - /share/Container/webtop-selkie:/config
-    ports:
-      - 3000:3000
-      - 3001:3001
     devices:
       - /dev/dri:/dev/dri
     shm_size: "1gb"
