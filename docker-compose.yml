@@ -285,6 +285,19 @@ services:
     shm_size: "1gb"
     restart: unless-stopped
 
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+    volumes:
+      - /share/Container/uptime-kuma:/app/data
+    ports:
+      - 3001:3001
+    restart: unless-stopped
+
   # n8n:
   #   image: docker.n8n.io/n8nio/n8n:latest
   #   restart: always
