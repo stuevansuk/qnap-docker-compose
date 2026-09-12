@@ -74,10 +74,10 @@ services:
     restart: unless-stopped
 
   playwright-chrome:
-     image: dgtlmoon/sockpuppetbrowser:latest
-     container_name: playwright-chrome
-     environment:
-       - SCREEN_WIDTH=1920
+    image: dgtlmoon/sockpuppetbrowser:latest
+    container_name: playwright-chrome
+    environment:
+      - SCREEN_WIDTH=1920
       - SCREEN_HEIGHT=1024
       - SCREEN_DEPTH=16
       - ENABLE_DEBUGGER=false
