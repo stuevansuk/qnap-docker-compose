@@ -68,7 +68,7 @@ services:
       - BASE_URL= https://changedetection.server.io/
       - PLAYWRIGHT_DRIVER_URL=ws://browser-sockpuppet-chrome:3000
     volumes:
-      - /share/Container/changedetection:/config
+      - /share/Container/changedetection:/datastore
     ports:
       - 5000:5000
     restart: unless-stopped
