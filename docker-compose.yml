@@ -353,6 +353,12 @@ services:
       # One mount for everything; incomplete/complete/category folders are
       # set inside it from Settings → Folders.
       - /share/Downloads/Packrat:/downloads
+      # Library folders: categories move finished (unpacked) releases into
+      # these (Settings → Categories → "Then move to"). Only mount shares
+      # that exist, or Docker creates a plain folder on the system volume.
+      - /share/PC:/library/PC
+      - /share/NSW:/library/Switch
+      # - /share/Consoles:/library/Consoles
     restart: unless-stopped
 
   # n8n:
