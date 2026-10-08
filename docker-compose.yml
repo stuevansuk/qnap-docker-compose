@@ -330,6 +330,31 @@ services:
       - 3001:3001
     restart: unless-stopped
 
+  packrat:
+    # IRC client + XDCC downloader (private image: `docker login ghcr.io` once on the NAS).
+    image: ghcr.io/stuevansuk/packrat:latest
+    container_name: packrat
+    # Host networking is required: DCC transfers are direct TCP connections
+    # to/from the bots, which Docker's NAT breaks. Web UI on :7171.
+    network_mode: host
+    env_file:
+      # PACKRAT_PASSWORD=... lives only on the NAS (this repo is public).
+      - /share/Container/packrat/packrat.env
+    environment:
+      - PUID=0
+      - PGID=0
+      - UMASK=002
+      - TZ=Europe/London
+      - PACKRAT_LISTEN=:7171
+      # Passive (reverse) DCC: forward this TCP range on the router to the NAS.
+      - PACKRAT_DCC_PORTS=50000-50010
+    volumes:
+      - /share/Container/packrat:/config
+      # One mount for everything; incomplete/complete/category folders are
+      # set inside it from Settings → Folders.
+      - /share/Downloads/Packrat:/downloads
+    restart: unless-stopped
+
   # n8n:
   #   image: docker.n8n.io/n8nio/n8n:latest
   #   restart: always
