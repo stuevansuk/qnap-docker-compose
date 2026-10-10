@@ -360,6 +360,33 @@ services:
       - /share/Consoles:/library/Consoles
     restart: unless-stopped
 
+  magpie:
+    # Soulseek client (private image: same GHCR login as Packrat).
+    image: ghcr.io/stuevansuk/magpie:latest
+    container_name: magpie
+    # Host networking: peers connect straight to the Soulseek listen port
+    # (2234, set in Settings) and must see the NAS's real address.
+    # Web UI on :7272. Forward TCP 2234 on the router to the NAS.
+    network_mode: host
+    env_file:
+      # MAGPIE_PASSWORD=... lives only on the NAS (this repo is public).
+      - /share/Container/magpie/magpie.env
+    environment:
+      - PUID=0
+      - PGID=0
+      - UMASK=002
+      - TZ=Europe/London
+      - MAGPIE_LISTEN=:7272
+    volumes:
+      - /share/Container/magpie:/config
+      # Incomplete + finished downloads and playlist folders.
+      - /share/Downloads/Magpie:/downloads
+      # Music library: share it (Settings → Sharing) and/or file finished
+      # albums into it (Settings → Folders). Create the folder first, or
+      # Docker makes a plain folder on the system volume.
+      - /share/Media/Music:/library/Music
+    restart: unless-stopped
+
   # n8n:
   #   image: docker.n8n.io/n8nio/n8n:latest
   #   restart: always
