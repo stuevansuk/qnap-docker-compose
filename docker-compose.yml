@@ -195,7 +195,7 @@ services:
       - /share/NSW/:/games/
 
   gluetun:
-    # VPN for Deluge, qBittorrent and Magpie (they use its network). Provider
+    # VPN for Deluge and qBittorrent (they use its network). Provider
     # and WireGuard keys live only on the NAS, in gluetun.env (this repo is
     # public): VPN_SERVICE_PROVIDER, VPN_TYPE=wireguard, WIREGUARD_PRIVATE_KEY,
     # WIREGUARD_ADDRESSES (+ WIREGUARD_PRESHARED_KEY and
@@ -217,7 +217,6 @@ services:
       - 6881:6881 #deluge
       - 6881:6881/udp #deluge
       - 8083:8083 #QbitTorrent
-      - 7272:7272 #magpie web UI
     volumes:
       - /share/Container/gluetun:/gluetun
       - /share/Container/deluge:/config
@@ -369,14 +368,10 @@ services:
     # Soulseek client (private image: same GHCR login as Packrat).
     image: ghcr.io/stuevansuk/magpie:latest
     container_name: magpie
-    # All traffic goes through the VPN (gluetun publishes the web UI, :7272);
-    # if the VPN is down, Magpie is offline rather than on the home IP. Don't
-    # forward a port on the router: with a provider that forwards a port, set
-    # Magpie's listen port (Settings) to it and list it in gluetun.env's
-    # FIREWALL_VPN_INPUT_PORTS.
-    network_mode: "service:gluetun"
-    depends_on:
-      - gluetun
+    # Host networking: peers connect straight to the Soulseek listen port
+    # (2234, set in Settings) and must see the NAS's real address.
+    # Web UI on :7272. Forward TCP 2234 on the router to the NAS.
+    network_mode: host
     env_file:
       # MAGPIE_PASSWORD=... lives only on the NAS (this repo is public).
       - /share/Container/magpie/magpie.env
