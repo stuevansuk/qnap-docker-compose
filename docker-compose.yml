@@ -381,6 +381,9 @@ services:
       - UMASK=002
       - TZ=Europe/London
       - MAGPIE_LISTEN=:7272
+      # Beatport is behind a Cloudflare check: Magpie reads challenged pages
+      # through magpie-cfbypass below (Status → Cloudflare bypass → Test).
+      - MAGPIE_CF_BYPASS_URL=http://127.0.0.1:8191
     volumes:
       - /share/Container/magpie:/config
       # Incomplete + finished downloads and playlist folders.
@@ -389,6 +392,19 @@ services:
       # albums into it (Settings → Folders). Create the folder first, or
       # Docker makes a plain folder on the system volume.
       - /share/Media/Music:/library/Music
+    depends_on:
+      - magpie-cfbypass
+    restart: unless-stopped
+
+  magpie-cfbypass:
+    # Cloudflare bypass for Magpie (CloudflareBypassForScraping, mirror mode).
+    # Runs a Chromium: ~1 GB image, a few hundred MB of memory while solving
+    # a check, idle otherwise. Bound to the NAS's loopback only; 8191 because
+    # pyload-ng has 8000. Magpie (host networking) reaches it on 127.0.0.1.
+    image: ghcr.io/sarperavci/cloudflarebypassforscraping:latest
+    container_name: magpie-cfbypass
+    ports:
+      - 127.0.0.1:8191:8000
     restart: unless-stopped
 
   # n8n:
