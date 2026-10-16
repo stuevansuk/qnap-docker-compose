@@ -411,7 +411,8 @@ services:
     # TEMPORARY: track analysis demo for a friend to try (private image:
     # same GHCR login as Packrat). Stateless, all analysis runs in the
     # visitor's browser. Remove this block, and close the port, when done.
-    image: ghcr.io/stuevansuk/trackscope:latest
+    # Pinned to a reference build; bump the tag on purpose, not via :latest.
+    image: ghcr.io/stuevansuk/trackscope:sha-1676042
     container_name: trackscope
     ports:
       - 3010:3010
