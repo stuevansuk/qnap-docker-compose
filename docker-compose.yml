@@ -407,6 +407,17 @@ services:
       - 127.0.0.1:8191:8000
     restart: unless-stopped
 
+  trackscope:
+    # TEMPORARY: track analysis demo for a friend to try (private image:
+    # same GHCR login as Packrat). Stateless, all analysis runs in the
+    # visitor's browser. Remove this block, and close the port, when done.
+    image: ghcr.io/stuevansuk/trackscope:latest
+    container_name: trackscope
+    ports:
+      - 3010:3010
+    mem_limit: 256m
+    restart: unless-stopped
+
   # n8n:
   #   image: docker.n8n.io/n8nio/n8n:latest
   #   restart: always
